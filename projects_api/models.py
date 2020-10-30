@@ -79,7 +79,8 @@ class MaterialSchemeProject(models.Model):
     construction_system_id = models.ForeignKey(ConstructionSystem, on_delete=models.DO_NOTHING)
     quantity = models.IntegerField()
     unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING)
-    provider_distance = models.IntegerField()
+    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING)
+    provider_distance = models.DecimalField(max_digits = 15, decimal_places = 10)
 
     def __str__(self):
         """Return string representation of material"""
@@ -91,7 +92,7 @@ class MaterialSchemeData(models.Model):
     standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING)
     potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING)
     unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING)
-    value = models.IntegerField()
+    value = models.DecimalField(max_digits = 15, decimal_places = 10)
 
     def __str__(self):
         """Return string representation of material"""

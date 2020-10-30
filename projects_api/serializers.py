@@ -48,7 +48,7 @@ class MaterialsSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 class SectionsSerializer(serializers.ModelSerializer):
-    """Serializes a section object"""
+    """Serializes a section section"""
 
     class Meta:
         model = models.Section
@@ -156,7 +156,7 @@ class PotentialTypesSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Used to create potential type"""
-        potentialType = models.Standard(
+        potentialType = models.PotentialType(
             name_potential_type=validated_data['name_potential_type']
         )
 
@@ -183,6 +183,7 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             construction_system_id=validated_data['construction_system_id'],
             quantity=validated_data['quantity'],
             unit_id=validated_data['unit_id'],
+            section_id=validated_data['section_id'],
             provider_distance=validated_data['provider_distance']
         )
 
@@ -202,7 +203,7 @@ class MaterialSchemeDataSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         """Used to create a material scheme data"""
-        material_scheme = models.MaterialSchemeData(
+        material_scheme_data = models.MaterialSchemeData(
             material_id=validated_data['material_id'],
             standard_id=validated_data['standard_id'],
             potential_type_id=validated_data['potential_type_id'],
@@ -210,8 +211,8 @@ class MaterialSchemeDataSerializer(serializers.ModelSerializer):
             value=validated_data['value']
         )
 
-        material_scheme.save()
-        return material_scheme
+        material_scheme_data.save()
+        return material_scheme_data
 
     def update(self, instance, validated_data):
         """Handle updating a material"""
