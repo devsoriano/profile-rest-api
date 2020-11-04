@@ -62,6 +62,26 @@ class CountriesSerializer(serializers.ModelSerializer):
         """Handle updating a country"""
         return super().update(instance, validated_data)
 
+class UsefulLifeSerializer(serializers.ModelSerializer):
+    """Serializes a useful life"""
+
+    class Meta:
+        model = models.UsefulLife
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create type project"""
+        useful_life = models.UsefulLife(
+            name_useful_life=validated_data['name_useful_life']
+        )
+
+        useful_life.save()
+        return useful_life
+
+    def update(self, instance, validated_data):
+        """Handle updating a country"""
+        return super().update(instance, validated_data)
+
 class ProjetcsSerializer(serializers.ModelSerializer):
     """Serializes a project object"""
 

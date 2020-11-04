@@ -36,6 +36,14 @@ class CountriesViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_country', )
 
+class UsefulLifeViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating useful life"""
+    serializer_class = serializers.UsefulLifeSerializer
+    queryset = models.UsefulLife.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_useful_life', )
+
 class ProjectsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
     serializer_class = serializers.ProjetcsSerializer
