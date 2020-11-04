@@ -99,7 +99,7 @@ class ProjetcsSerializer(serializers.ModelSerializer):
             builded_surface=validated_data['builded_surface'],
             living_area=validated_data['living_area'],
             tier=validated_data['tier'],
-            useful_life=validated_data['useful_life']
+            useful_life_id=validated_data['useful_life_id']
         )
 
         project.save()
