@@ -2,6 +2,66 @@ from rest_framework import serializers
 
 from projects_api import models
 
+class UsesSerializer(serializers.ModelSerializer):
+    """Serializes a section use"""
+
+    class Meta:
+        model = models.Use
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create use"""
+        use = models.Use(
+            name_use=validated_data['name_use']
+        )
+
+        use.save()
+        return use
+
+    def update(self, instance, validated_data):
+        """Handle updating a use"""
+        return super().update(instance, validated_data)
+
+class TypeProjectsSerializer(serializers.ModelSerializer):
+    """Serializes a type projects"""
+
+    class Meta:
+        model = models.TypeProject
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create type project"""
+        type_project = models.TypeProject(
+            name_type_project=validated_data['name_type_project']
+        )
+
+        type_project.save()
+        return type_project
+
+    def update(self, instance, validated_data):
+        """Handle updating a type project"""
+        return super().update(instance, validated_data)
+
+class CountriesSerializer(serializers.ModelSerializer):
+    """Serializes a countries"""
+
+    class Meta:
+        model = models.Country
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create type project"""
+        country = models.Country(
+            name_country=validated_data['name_country']
+        )
+
+        country.save()
+        return country
+
+    def update(self, instance, validated_data):
+        """Handle updating a country"""
+        return super().update(instance, validated_data)
+
 class ProjetcsSerializer(serializers.ModelSerializer):
     """Serializes a project object"""
 
@@ -13,7 +73,9 @@ class ProjetcsSerializer(serializers.ModelSerializer):
         """Used to create a project."""
         project = models.Project(
             name_project=validated_data['name_project'],
-            use=validated_data['use'],
+            use_id=validated_data['use_id'],
+            type_id=validated_data['type_id'],
+            country_id=validated_data['country_id'],
             builded_surface=validated_data['builded_surface'],
             living_area=validated_data['living_area'],
             tier=validated_data['tier'],

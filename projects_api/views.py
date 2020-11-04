@@ -12,6 +12,30 @@ from projects_api import models
 from projects_api import serializers
 from profiles_api import permissions
 
+class UsesViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating uses"""
+    serializer_class = serializers.UsesSerializer
+    queryset = models.Use.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_use', )
+
+class TypeProjectsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating type projects"""
+    serializer_class = serializers.TypeProjectsSerializer
+    queryset = models.TypeProject.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_type_project', )
+
+class CountriesViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating countries"""
+    serializer_class = serializers.CountriesSerializer
+    queryset = models.Country.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_country', )
+
 class ProjectsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
     serializer_class = serializers.ProjetcsSerializer
@@ -28,7 +52,6 @@ class MaterialsViewSet(viewsets.ModelViewSet):
     #authentication_classes = (TokenAuthentication,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_material', )
-
 
 class SectionsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating sections"""

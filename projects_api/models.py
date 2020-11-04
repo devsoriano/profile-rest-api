@@ -2,21 +2,55 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Use(models.Model):
+    """Construction use model"""
+    name_use = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name_material"""
+        return self.name_use
+
+class TypeProject(models.Model):
+    """Construction type project model"""
+    name_type_project = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of type project model"""
+        return self.name_type_project
+
+class Country(models.Model):
+    """Construction type country model"""
+    name_country = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of country model"""
+        return self.name_country
+
+class UsefulLife(models.Model):
+    """Construction useful life model"""
+    name_useful_life = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of useful life model"""
+        return self.name_useful_life
+
 class Project(models.Model):
     """Project model"""
     name_project = models.CharField(max_length=255)
-    use = models.CharField(max_length=255)
+    use_id = models.ForeignKey(Use, on_delete=models.DO_NOTHING)
+    type_id = models.ForeignKey(TypeProject, on_delete=models.DO_NOTHING)
+    country_id = models.ForeignKey(Country, on_delete=models.DO_NOTHING)
+    useful_life_id = models.ForeignKey(UsefulLife, on_delete=models.DO_NOTHING)
     builded_surface = models.IntegerField()
     living_area = models.IntegerField()
     tier = models.IntegerField()
-    useful_life = models.IntegerField()
 
     def __str__(self):
         """Return string representation of project"""
         return self.name_project
 
 class Material(models.Model):
-    """Construction system model"""
+    """Construction material model"""
     name_material = models.CharField(max_length=255)
 
     def __str__(self):
