@@ -44,6 +44,14 @@ class UsefulLifeViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_useful_life', )
 
+class HousingSchemeViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating housing Scheme"""
+    serializer_class = serializers.HousingSchemeSerializer
+    queryset = models.HousingScheme.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_housing_scheme', )
+
 class ProjectsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
     serializer_class = serializers.ProjetcsSerializer

@@ -34,13 +34,22 @@ class UsefulLife(models.Model):
         """Return string representation of useful life model"""
         return self.name_useful_life
 
+class HousingScheme(models.Model):
+    """Construction housing scheme model"""
+    name_housing_scheme = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of housing scheme model"""
+        return self.name_housing_scheme
+
 class Project(models.Model):
     """Project model"""
     name_project = models.CharField(max_length=255)
-    use_id = models.ForeignKey(Use, on_delete=models.DO_NOTHING)
-    type_id = models.ForeignKey(TypeProject, on_delete=models.DO_NOTHING)
-    country_id = models.ForeignKey(Country, on_delete=models.DO_NOTHING)
-    useful_life_id = models.ForeignKey(UsefulLife, on_delete=models.DO_NOTHING)
+    use_id = models.ForeignKey(Use, on_delete=models.DO_NOTHING, null=True)
+    type_id = models.ForeignKey(TypeProject, on_delete=models.DO_NOTHING, null=True)
+    country_id = models.ForeignKey(Country, on_delete=models.DO_NOTHING, null=True)
+    useful_life_id = models.ForeignKey(UsefulLife, on_delete=models.DO_NOTHING, null=True)
+    housing_scheme_id = models.ForeignKey(HousingScheme, on_delete=models.DO_NOTHING, null=True)
     builded_surface = models.IntegerField()
     living_area = models.IntegerField()
     tier = models.IntegerField()
@@ -107,13 +116,13 @@ class PotentialType(models.Model):
 
 class MaterialSchemeProject(models.Model):
     """MaterialSchemeProject model"""
-    material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING)
-    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING)
-    origin_id = models.ForeignKey(Origin, on_delete=models.DO_NOTHING)
-    construction_system_id = models.ForeignKey(ConstructionSystem, on_delete=models.DO_NOTHING)
+    material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    origin_id = models.ForeignKey(Origin, on_delete=models.DO_NOTHING, null=True)
+    construction_system_id = models.ForeignKey(ConstructionSystem, on_delete=models.DO_NOTHING, null=True)
     quantity = models.IntegerField()
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING)
-    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING)
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
     provider_distance = models.DecimalField(max_digits = 15, decimal_places = 10)
 
     def __str__(self):
@@ -122,10 +131,10 @@ class MaterialSchemeProject(models.Model):
 
 class MaterialSchemeData(models.Model):
     """MaterialSchemeData model"""
-    material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING)
-    standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING)
-    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING)
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING)
+    material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING, null=True)
+    standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING, null=True)
+    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
     value = models.DecimalField(max_digits = 15, decimal_places = 10)
 
     def __str__(self):

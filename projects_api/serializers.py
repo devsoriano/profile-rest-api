@@ -82,6 +82,26 @@ class UsefulLifeSerializer(serializers.ModelSerializer):
         """Handle updating a country"""
         return super().update(instance, validated_data)
 
+class HousingSchemeSerializer(serializers.ModelSerializer):
+    """Serializes a housing scheme"""
+
+    class Meta:
+        model = models.HousingScheme
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create type project"""
+        housing_scheme = models.HousingScheme(
+            name_housing_scheme = validated_data['name_housing_scheme']
+        )
+
+        housing_scheme.save()
+        return housing_scheme
+
+    def update(self, instance, validated_data):
+        """Handle updating a country"""
+        return super().update(instance, validated_data)
+
 class ProjetcsSerializer(serializers.ModelSerializer):
     """Serializes a project object"""
 
