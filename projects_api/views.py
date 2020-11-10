@@ -85,14 +85,6 @@ class OriginsViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_origin', )
 
-class ConstructionSystemsViewSet(viewsets.ModelViewSet):
-    """Handle creating and updating construction systems"""
-    serializer_class = serializers.ConstructionSystemsSerializer
-    queryset = models.ConstructionSystem.objects.all()
-    #authentication_classes = (TokenAuthentication,)
-    filter_backends = (filters.SearchFilter,)
-    search_fields = ('name_construction_system', )
-
 class UnitsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating units"""
     serializer_class = serializers.UnitsSerializer

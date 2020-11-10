@@ -129,26 +129,6 @@ class ProjetcsSerializer(serializers.ModelSerializer):
         """Handle updating a project"""
         return super().update(instance, validated_data)
 
-class MaterialsSerializer(serializers.ModelSerializer):
-    """Serializes a section material"""
-
-    class Meta:
-        model = models.Material
-        fields = '__all__'
-
-    def create(self, validated_data):
-        """Used to create material"""
-        material = models.Material(
-            name_material=validated_data['name_material']
-        )
-
-        material.save()
-        return material
-
-    def update(self, instance, validated_data):
-        """Handle updating a section"""
-        return super().update(instance, validated_data)
-
 class SectionsSerializer(serializers.ModelSerializer):
     """Serializes a section section"""
 
@@ -184,26 +164,6 @@ class OriginsSerializer(serializers.ModelSerializer):
 
         origin.save()
         return origin
-
-    def update(self, instance, validated_data):
-        """Handle updating a section"""
-        return super().update(instance, validated_data)
-
-class ConstructionSystemsSerializer(serializers.ModelSerializer):
-    """Serializes a construction system object"""
-
-    class Meta:
-        model = models.ConstructionSystem
-        fields = '__all__'
-
-    def create(self, validated_data):
-        """Used to create construction cystem"""
-        construction = models.ConstructionSystem(
-            name_construction_system=validated_data['name_construction_system']
-        )
-
-        construction.save()
-        return construction
 
     def update(self, instance, validated_data):
         """Handle updating a section"""
@@ -269,6 +229,27 @@ class PotentialTypesSerializer(serializers.ModelSerializer):
         """Handle updating a section"""
         return super().update(instance, validated_data)
 
+class MaterialsSerializer(serializers.ModelSerializer):
+    """Serializes a section material"""
+
+    class Meta:
+        model = models.Material
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create material"""
+        material = models.Material(
+            name_material=validated_data['name_material'],
+            unit_id=validated_data['unit_id']
+        )
+
+        material.save()
+        return material
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
 class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
     """Material Scheme a material object"""
 
@@ -282,9 +263,8 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             material_id=validated_data['material_id'],
             project_id=validated_data['project_id'],
             origin_id=validated_data['origin_id'],
-            construction_system_id=validated_data['construction_system_id'],
+            construction_system=validated_data['construction_system'],
             quantity=validated_data['quantity'],
-            unit_id=validated_data['unit_id'],
             section_id=validated_data['section_id'],
             provider_distance=validated_data['provider_distance']
         )
