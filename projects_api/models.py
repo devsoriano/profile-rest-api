@@ -107,6 +107,38 @@ class Material(models.Model):
         """Return string representation of name_material"""
         return self.name_material
 
+class VolumeUnit(models.Model):
+    """Construction volume unit model"""
+    name_volume_unit = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name volume unit"""
+        return self.name_volume_unit
+
+class EnergyUnit(models.Model):
+    """Construction energy unit model"""
+    name_energy_unit = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name volume unit"""
+        return self.name_energy_unit
+
+class BulkUnit(models.Model):
+    """Construction bulk unit model"""
+    name_bulk_unit = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name bulk unit"""
+        return self.name_bulk_unit
+
+class SourceInformation(models.Model):
+    """Construction source information model"""
+    name_source_information = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name source information"""
+        return self.name_source_information
+
 class MaterialSchemeProject(models.Model):
     """MaterialSchemeProject model"""
     material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING, null=True)

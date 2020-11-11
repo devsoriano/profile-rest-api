@@ -250,6 +250,86 @@ class MaterialsSerializer(serializers.ModelSerializer):
         """Handle updating a section"""
         return super().update(instance, validated_data)
 
+class VolumeUnitsSerializer(serializers.ModelSerializer):
+    """Serializes a create volume unit"""
+
+    class Meta:
+        model = models.VolumeUnit
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        unit = models.VolumeUnit(
+            name_volume_unit=validated_data['name_volume_unit']
+        )
+
+        unit.save()
+        return unit
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class EnergyUnitsSerializer(serializers.ModelSerializer):
+    """Serializes a create energy unit"""
+
+    class Meta:
+        model = models.EnergyUnit
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        unit = models.EnergyUnit(
+            name_energy_unit=validated_data['name_energy_unit']
+        )
+
+        unit.save()
+        return unit
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class BulkUnitsSerializer(serializers.ModelSerializer):
+    """Serializes a create bulk unit"""
+
+    class Meta:
+        model = models.BulkUnit
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        unit = models.BulkUnit(
+            name_bulk_unit=validated_data['name_bulk_unit']
+        )
+
+        unit.save()
+        return unit
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class SourceInformationSerializer(serializers.ModelSerializer):
+    """Serializes a create source information"""
+
+    class Meta:
+        model = models.SourceInformation
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        source = models.SourceInformation(
+            name_source_information = validated_data['name_source_information']
+        )
+
+        source.save()
+        return source
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
 class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
     """Material Scheme a material object"""
 

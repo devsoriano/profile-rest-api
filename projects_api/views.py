@@ -109,6 +109,38 @@ class PotentialTypesViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_potential_type', )
 
+class VolumeUnitsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating volume units"""
+    serializer_class = serializers.VolumeUnitsSerializer
+    queryset = models.VolumeUnit.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_volume_unit', )
+
+class EnergyUnitsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating energy units"""
+    serializer_class = serializers.EnergyUnitsSerializer
+    queryset = models.EnergyUnit.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_energy_unit', )
+
+class BulkUnitsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating bulk units"""
+    serializer_class = serializers.BulkUnitsSerializer
+    queryset = models.BulkUnit.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_bulk_unit', )
+
+class SourceInformationViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating source information"""
+    serializer_class = serializers.SourceInformationSerializer
+    queryset = models.SourceInformation.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_source_information', )
+
 class MaterialSchemeProjectViewSet(viewsets.ModelViewSet):
     """Handle creating and updating materials"""
     serializer_class = serializers.MaterialSchemeProjectSerializer
