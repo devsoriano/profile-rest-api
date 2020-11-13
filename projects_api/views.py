@@ -141,6 +141,14 @@ class SourceInformationViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_source_information', )
 
+class ConstructiveProcessViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating source information"""
+    serializer_class = serializers.ConstructiveProcessSerializer
+    queryset = models.ConstructiveProcess.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('name_constructive_process', )
+
 class MaterialSchemeProjectViewSet(viewsets.ModelViewSet):
     """Handle creating and updating materials"""
     serializer_class = serializers.MaterialSchemeProjectSerializer
@@ -156,3 +164,11 @@ class MaterialSchemeDataViewSet(viewsets.ModelViewSet):
     #authentication_classes = (TokenAuthentication,)
     filter_backends = (filters.SearchFilter,)
     search_fields = ('value', )
+
+class ConstructiveSystemElementViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating CSE"""
+    serializer_class = serializers.ConstructiveSystemElementSerializer
+    queryset = models.ConstructiveSystemElement.objects.all()
+    #authentication_classes = (TokenAuthentication,)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('project_id', )

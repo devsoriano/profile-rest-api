@@ -58,7 +58,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200"
+    "http://localhost:4200",
+    "https://evamed-test.herokuapp.com"
 ]
 
 ROOT_URLCONF = 'profiles_project.urls'

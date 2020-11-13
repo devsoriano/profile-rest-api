@@ -139,6 +139,14 @@ class SourceInformation(models.Model):
         """Return string representation of name source information"""
         return self.name_source_information
 
+class ConstructiveProcess(models.Model):
+    """Constructive process"""
+    name_constructive_process = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name constructive process"""
+        return self.name_constructive_process
+
 class MaterialSchemeProject(models.Model):
     """MaterialSchemeProject model"""
     material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING, null=True)
@@ -164,3 +172,18 @@ class MaterialSchemeData(models.Model):
     def __str__(self):
         """Return string representation of material"""
         return self.value
+
+class ConstructiveSystemElement(models.Model):
+    """CSE model"""
+    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
+    constructive_process_id = models.ForeignKey(ConstructiveProcess, on_delete=models.DO_NOTHING, null=True)
+    quantity =  models.IntegerField()
+    volume_unit_id = models.ForeignKey(VolumeUnit, on_delete=models.DO_NOTHING, null=True)
+    energy_unit_id = models.ForeignKey(EnergyUnit, on_delete=models.DO_NOTHING, null=True)
+    bulk_unit_id = models.ForeignKey(BulkUnit, on_delete=models.DO_NOTHING, null=True)
+    source_information_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        """Return string representation of ma"""
+        return self.project_id

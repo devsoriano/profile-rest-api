@@ -21,8 +21,10 @@ router.register('volume-units', views.VolumeUnitsViewSet)
 router.register('energy-units', views.EnergyUnitsViewSet)
 router.register('bulk-units', views.BulkUnitsViewSet)
 router.register('source-information', views.SourceInformationViewSet)
+router.register('constructive-process', views.ConstructiveProcessViewSet)
 router.register('material-scheme-project', views.MaterialSchemeProjectViewSet)
 router.register('material-scheme-data', views.MaterialSchemeDataViewSet)
+router.register('constructive-system-element', views.ConstructiveSystemElementViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

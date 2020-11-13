@@ -330,6 +330,26 @@ class SourceInformationSerializer(serializers.ModelSerializer):
         """Handle updating a section"""
         return super().update(instance, validated_data)
 
+class ConstructiveProcessSerializer(serializers.ModelSerializer):
+    """Serializes a create constructive process"""
+
+    class Meta:
+        model = models.ConstructiveProcess
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        constructiveProcess = models.ConstructiveProcess(
+            name_constructive_process = validated_data['name_constructive_process']
+        )
+
+        constructiveProcess.save()
+        return constructiveProcess
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
 class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
     """Material Scheme a material object"""
 
@@ -375,6 +395,33 @@ class MaterialSchemeDataSerializer(serializers.ModelSerializer):
 
         material_scheme_data.save()
         return material_scheme_data
+
+    def update(self, instance, validated_data):
+        """Handle updating a material"""
+        return super().update(instance, validated_data)
+
+class ConstructiveSystemElementSerializer(serializers.ModelSerializer):
+    """Serializer CSY"""
+
+    class Meta:
+        model = models.ConstructiveSystemElement
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a CSE"""
+        constructive_system_element = models.ConstructiveSystemElement(
+            project_id=validated_data['project_id'],
+            section_id=validated_data['section_id'],
+            constructive_process_id=validated_data['constructive_process_id'],
+            quantity=validated_data['quantity'],
+            volume_unit_id=validated_data['volume_unit_id'],
+            energy_unit_id=validated_data['energy_unit_id'],
+            bulk_unit_id=validated_data['bulk_unit_id'],
+            source_information_id=validated_data['source_information_id']
+        )
+
+        constructive_system_element.save()
+        return constructive_system_element
 
     def update(self, instance, validated_data):
         """Handle updating a material"""
