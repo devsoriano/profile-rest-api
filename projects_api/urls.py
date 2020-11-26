@@ -25,6 +25,9 @@ router.register('constructive-process', views.ConstructiveProcessViewSet)
 router.register('material-scheme-project', views.MaterialSchemeProjectViewSet)
 router.register('material-scheme-data', views.MaterialSchemeDataViewSet)
 router.register('constructive-system-element', views.ConstructiveSystemElementViewSet)
+router.register('sources-electricity-consumption', views.SourcesElectricityConsumptionViewSet)
+router.register('annual-consumption-required', views.AnnualConsumptionRequiredViewSet)
+router.register('electricity-consumption-data', views.ElectricityConsumptionDataViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

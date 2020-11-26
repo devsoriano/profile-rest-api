@@ -426,3 +426,69 @@ class ConstructiveSystemElementSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Handle updating a material"""
         return super().update(instance, validated_data)
+
+class SourcesElectricityConsumptionSerializer(serializers.ModelSerializer):
+    """Serializes a create SEC"""
+
+    class Meta:
+        model = models.SourcesElectricityConsumption
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        sec = models.SourcesElectricityConsumption(
+            name_source_electricity_consumption = validated_data['name_source_electricity_consumption']
+        )
+
+        sec.save()
+        return sec
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class AnnualConsumptionRequiredSerializer(serializers.ModelSerializer):
+    """Serializer ACR"""
+
+    class Meta:
+        model = models.AnnualConsumptionRequired
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a ACR"""
+        ACR = models.AnnualConsumptionRequired(
+            project_id=validated_data['project_id'],
+            quantity=validated_data['quantity'],
+            unit_id=validated_data['unit_id']
+        )
+
+        ACR.save()
+        return ACR
+
+    def update(self, instance, validated_data):
+        """Handle updating a ACR"""
+        return super().update(instance, validated_data)
+
+class ElectricityConsumptionDataSerializer(serializers.ModelSerializer):
+    """Serializer ECD"""
+
+    class Meta:
+        model = models.ElectricityConsumptionData
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a ACR"""
+        ECD = models.ElectricityConsumptionData(
+            annual_consumption_required_id=validated_data['annual_consumption_required_id'],
+            unit_id=validated_data['unit_id'],
+            quantity=validated_data['quantity'],
+            type=validated_data['type'],
+            percentage=validated_data['percentage']
+        )
+
+        ECD.save()
+        return ECD
+
+    def update(self, instance, validated_data):
+        """Handle updating a ECD"""
+        return super().update(instance, validated_data)

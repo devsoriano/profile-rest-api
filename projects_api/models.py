@@ -155,7 +155,7 @@ class MaterialSchemeProject(models.Model):
     construction_system = models.CharField(max_length=255, null=True)
     quantity = models.IntegerField()
     section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
-    provider_distance = models.DecimalField(max_digits = 15, decimal_places = 10)
+    provider_distance = models.DecimalField(max_digits = 150, decimal_places = 100)
 
     def __str__(self):
         """Return string representation of material"""
@@ -167,7 +167,7 @@ class MaterialSchemeData(models.Model):
     standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING, null=True)
     potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
-    value = models.DecimalField(max_digits = 15, decimal_places = 10)
+    value = models.DecimalField(max_digits=150, decimal_places=100)
 
     def __str__(self):
         """Return string representation of material"""
@@ -183,6 +183,36 @@ class ConstructiveSystemElement(models.Model):
     energy_unit_id = models.ForeignKey(EnergyUnit, on_delete=models.DO_NOTHING, null=True)
     bulk_unit_id = models.ForeignKey(BulkUnit, on_delete=models.DO_NOTHING, null=True)
     source_information_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        """Return string representation of ma"""
+        return self.project_id
+
+class SourcesElectricityConsumption(models.Model):
+    """Sources electricity consumption"""
+    name_source_electricity_consumption = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name constructive process"""
+        return self.name_source_electricity_consumption
+
+class AnnualConsumptionRequired(models.Model):
+    """ACR model"""
+    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    quantity =  models.IntegerField()
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        """Return string representation of ACR"""
+        return self.project_id
+
+class ElectricityConsumptionData(models.Model):
+    """ECD model"""
+    annual_consumption_required_id = models.ForeignKey(AnnualConsumptionRequired, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    quantity =  models.IntegerField(null=True)
+    type = models.CharField(max_length=255)
+    percentage = models.IntegerField(null=True)
 
     def __str__(self):
         """Return string representation of ma"""
