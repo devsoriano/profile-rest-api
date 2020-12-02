@@ -153,7 +153,8 @@ class MaterialSchemeProject(models.Model):
     project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
     origin_id = models.ForeignKey(Origin, on_delete=models.DO_NOTHING, null=True)
     construction_system = models.CharField(max_length=255, null=True)
-    quantity = models.IntegerField()
+    provider_distance = models.IntegerField(null=True)
+    quantity = models.IntegerField(null=True)
     section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
     value = models.DecimalField(max_digits=25, decimal_places=25, null=True)
 
