@@ -28,6 +28,8 @@ router.register('constructive-system-element', views.ConstructiveSystemElementVi
 router.register('sources-electricity-consumption', views.SourcesElectricityConsumptionViewSet)
 router.register('annual-consumption-required', views.AnnualConsumptionRequiredViewSet)
 router.register('electricity-consumption-data', views.ElectricityConsumptionDataViewSet)
+router.register('stage-scheme-data', views.StageSchemeDataViewSet)
+router.register('type-energy', views.TypeEnergyViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

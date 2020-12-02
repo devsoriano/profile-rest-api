@@ -155,7 +155,7 @@ class MaterialSchemeProject(models.Model):
     construction_system = models.CharField(max_length=255, null=True)
     quantity = models.IntegerField()
     section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
-    provider_distance = models.DecimalField(max_digits = 150, decimal_places = 100)
+    value = models.DecimalField(max_digits=25, decimal_places=25, null=True)
 
     def __str__(self):
         """Return string representation of material"""
@@ -167,7 +167,7 @@ class MaterialSchemeData(models.Model):
     standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING, null=True)
     potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
-    value = models.DecimalField(max_digits=150, decimal_places=100)
+    value = models.DecimalField(max_digits=25, decimal_places=25, null=True )
 
     def __str__(self):
         """Return string representation of material"""
@@ -206,14 +206,34 @@ class AnnualConsumptionRequired(models.Model):
         """Return string representation of ACR"""
         return self.project_id
 
+class TypeEnergy(models.Model):
+    """Constructive type energy"""
+    name_type_energy = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of name type energy"""
+        return self.name_type_energy
+
 class ElectricityConsumptionData(models.Model):
     """ECD model"""
     annual_consumption_required_id = models.ForeignKey(AnnualConsumptionRequired, on_delete=models.DO_NOTHING, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
     quantity =  models.IntegerField(null=True)
-    type = models.CharField(max_length=255)
+    type = models.ForeignKey(TypeEnergy, on_delete=models.DO_NOTHING, null=True)
     percentage = models.IntegerField(null=True)
 
     def __str__(self):
-        """Return string representation of ma"""
-        return self.project_id
+        """Return string representation of ECD"""
+        return self.annual_consumption_required_id
+
+class StageSchemeData(models.Model):
+    """SSD model"""
+    name_stage = models.CharField(max_length=255, null=True)
+    abbreviation = models.CharField(max_length=255, null=True)
+    unit_stage_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    value = models.DecimalField(max_digits=25, decimal_places=25, null=True)
+    stage = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        """Return string representation of ECD"""
+        return self.name_stage

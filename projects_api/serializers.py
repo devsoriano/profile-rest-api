@@ -492,3 +492,47 @@ class ElectricityConsumptionDataSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Handle updating a ECD"""
         return super().update(instance, validated_data)
+
+class StageSchemeDataSerializer(serializers.ModelSerializer):
+    """Serializer SSD"""
+
+    class Meta:
+        model = models.StageSchemeData
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a SSD"""
+        SSD = models.StageSchemeData(
+            name_stage=validated_data['name_stage'],
+            abbreviation=validated_data['abbreviation'],
+            unit_stage_id=validated_data['unit_stage_id'],
+            value=validated_data['value'],
+            stage=validated_data['stage'],
+        )
+
+        SSD.save()
+        return SSD
+
+    def update(self, instance, validated_data):
+        """Handle updating a SSD"""
+        return super().update(instance, validated_data)
+
+class TypeEnergySerializer(serializers.ModelSerializer):
+    """Serializes a type energy"""
+
+    class Meta:
+        model = models.TypeEnergy
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        TypeEnergy = models.TypeEnergy(
+            name_type_energy = validated_data['name_type_energy']
+        )
+
+        TypeEnergy.save()
+        return TypeEnergy
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)

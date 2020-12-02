@@ -52,7 +52,7 @@ class ProjectsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ProjetcsSerializer
     queryset = models.Project.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('name_project',)
+    search_fields = ('=id',)
 
 class MaterialsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating materials"""
@@ -172,3 +172,17 @@ class ElectricityConsumptionDataViewSet(viewsets.ModelViewSet):
     queryset = models.ElectricityConsumptionData.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('annual_consumption_required_id', )
+
+class StageSchemeDataViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating create SSD"""
+    serializer_class = serializers.StageSchemeDataSerializer
+    queryset = models.StageSchemeData.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('=id', )
+
+class TypeEnergyViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating create TypeEnergy"""
+    serializer_class = serializers.TypeEnergySerializer
+    queryset = models.TypeEnergy.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('=id', )
