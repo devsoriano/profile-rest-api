@@ -183,6 +183,6 @@ class StageSchemeDataViewSet(viewsets.ModelViewSet):
 class TypeEnergyViewSet(viewsets.ModelViewSet):
     """Handle creating and updating create TypeEnergy"""
     serializer_class = serializers.TypeEnergySerializer
-    queryset = models.TypeEnergy.objects.all()
+    queryset = models.StageSchemeData.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=id', )

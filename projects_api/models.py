@@ -160,7 +160,7 @@ class MaterialSchemeProject(models.Model):
 
     def __str__(self):
         """Return string representation of material"""
-        return self.material_id
+        return str(self.material_id)
 
 class MaterialSchemeData(models.Model):
     """MaterialSchemeData model"""
@@ -187,7 +187,7 @@ class ConstructiveSystemElement(models.Model):
 
     def __str__(self):
         """Return string representation of ma"""
-        return self.project_id
+        return str(self.project_id)
 
 class SourcesElectricityConsumption(models.Model):
     """Sources electricity consumption"""
@@ -205,7 +205,7 @@ class AnnualConsumptionRequired(models.Model):
 
     def __str__(self):
         """Return string representation of ACR"""
-        return self.project_id
+        return str(self.project_id)
 
 class TypeEnergy(models.Model):
     """Constructive type energy"""
@@ -225,7 +225,7 @@ class ElectricityConsumptionData(models.Model):
 
     def __str__(self):
         """Return string representation of ECD"""
-        return self.annual_consumption_required_id
+        return str(self.annual_consumption_required_id)
 
 class StageSchemeData(models.Model):
     """SSD model"""
