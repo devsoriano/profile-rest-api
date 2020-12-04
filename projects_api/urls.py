@@ -30,6 +30,8 @@ router.register('annual-consumption-required', views.AnnualConsumptionRequiredVi
 router.register('electricity-consumption-data', views.ElectricityConsumptionDataViewSet)
 router.register('stage-scheme-data', views.StageSchemeDataViewSet)
 router.register('type-energy', views.TypeEnergyViewSet)
+router.register('electricity-consumption-deconstructive-process', views.ElectricityConsumptionDeconstructiveProcessViewSet)
+router.register('treatment-of-generate-wasted', views.TreatmentOfGeneratedWasteViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

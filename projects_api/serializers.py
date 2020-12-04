@@ -536,3 +536,51 @@ class TypeEnergySerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Handle updating a section"""
         return super().update(instance, validated_data)
+
+class ElectricityConsumptionDeconstructiveProcessSerializer(serializers.ModelSerializer):
+    """Serializer ECDP"""
+
+    class Meta:
+        model = models.ElectricityConsumptionDeconstructiveProcess
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a ECDP"""
+        SSD = models.ElectricityConsumptionDeconstructiveProcess(
+            unit_id=validated_data['unit_id'],
+            source_information_id=validated_data['source_information_id'],
+            quantity=validated_data['quantity'],
+            section_id=validated_data['section_id'],
+            stage=validated_data['project_id'],
+        )
+
+        SSD.save()
+        return SSD
+
+    def update(self, instance, validated_data):
+        """Handle updating a ECDP"""
+        return super().update(instance, validated_data)
+
+class TreatmentOfGeneratedWasteSerializer(serializers.ModelSerializer):
+    """Serializer TOGW"""
+
+    class Meta:
+        model = models.TreatmentOfGeneratedWaste
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a TOGW"""
+        SSD = models.TreatmentOfGeneratedWaste(
+            landfill=validated_data['landfill'],
+            recycling=validated_data['recycling'],
+            reuse=validated_data['reuse'],
+            section_id=validated_data['section_id'],
+            stage=validated_data['project_id'],
+        )
+
+        SSD.save()
+        return SSD
+
+    def update(self, instance, validated_data):
+        """Handle updating a ECDP"""
+        return super().update(instance, validated_data)

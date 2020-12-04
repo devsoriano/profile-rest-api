@@ -238,3 +238,27 @@ class StageSchemeData(models.Model):
     def __str__(self):
         """Return string representation of ECD"""
         return self.name_stage
+
+class ElectricityConsumptionDeconstructiveProcess(models.Model):
+    """"ECDP"""
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    source_information_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
+    quantity = models.IntegerField(null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        """Return string representation of ECP"""
+        return str(self.project_id)
+
+class TreatmentOfGeneratedWaste(models.Model):
+    """TOGW"""
+    landfill = models.IntegerField(null=True)
+    recycling = models.IntegerField(null=True)
+    reuse = models.IntegerField(null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+
+    def __str__(self):
+        """Return string representation of TOGW"""
+        return str(self.project_id)

@@ -183,6 +183,22 @@ class StageSchemeDataViewSet(viewsets.ModelViewSet):
 class TypeEnergyViewSet(viewsets.ModelViewSet):
     """Handle creating and updating create TypeEnergy"""
     serializer_class = serializers.TypeEnergySerializer
-    queryset = models.StageSchemeData.objects.all()
+    queryset = models.TypeEnergy.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('=id', )
+
+
+class ElectricityConsumptionDeconstructiveProcessViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating create ECDP"""
+    serializer_class = serializers.ElectricityConsumptionDeconstructiveProcessSerializer
+    queryset = models.ElectricityConsumptionDeconstructiveProcess.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('=id', )
+
+
+class TreatmentOfGeneratedWasteViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating create TOGW"""
+    serializer_class = serializers.TreatmentOfGeneratedWasteSerializer
+    queryset = models.TreatmentOfGeneratedWaste.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=id', )
