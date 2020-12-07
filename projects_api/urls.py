@@ -32,6 +32,8 @@ router.register('stage-scheme-data', views.StageSchemeDataViewSet)
 router.register('type-energy', views.TypeEnergyViewSet)
 router.register('electricity-consumption-deconstructive-process', views.ElectricityConsumptionDeconstructiveProcessViewSet)
 router.register('treatment-of-generate-wasted', views.TreatmentOfGeneratedWasteViewSet)
+router.register('source-information-data', views.SourceInformationDataViewSet)
+router.register('type-energy-data', views.TypeEnergyDataViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

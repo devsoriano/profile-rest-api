@@ -202,3 +202,18 @@ class TreatmentOfGeneratedWasteViewSet(viewsets.ModelViewSet):
     queryset = models.TreatmentOfGeneratedWaste.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=id', )
+
+
+class SourceInformationDataViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating Source information data"""
+    serializer_class = serializers.SourceInformationDataSerializer
+    queryset = models.SourceInformationData.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('value', )
+
+class TypeEnergyDataViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating Type Energy Data"""
+    serializer_class = serializers.TypeEnergyDataSerializer
+    queryset = models.TypeEnergyData.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('value', )

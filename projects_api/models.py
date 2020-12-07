@@ -156,7 +156,7 @@ class MaterialSchemeProject(models.Model):
     provider_distance = models.IntegerField(null=True)
     quantity = models.IntegerField(null=True)
     section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
-    value = models.DecimalField(max_digits=25, decimal_places=25, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
         """Return string representation of material"""
@@ -168,7 +168,7 @@ class MaterialSchemeData(models.Model):
     standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING, null=True)
     potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
-    value = models.DecimalField(max_digits=25, decimal_places=25, null=True )
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
 
     def __str__(self):
         """Return string representation of material"""
@@ -232,7 +232,7 @@ class StageSchemeData(models.Model):
     name_stage = models.CharField(max_length=255, null=True)
     abbreviation = models.CharField(max_length=255, null=True)
     unit_stage_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
-    value = models.DecimalField(max_digits=25, decimal_places=25, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=23, null=True)
     stage = models.CharField(max_length=255, null=True)
 
     def __str__(self):
@@ -262,3 +262,27 @@ class TreatmentOfGeneratedWaste(models.Model):
     def __str__(self):
         """Return string representation of TOGW"""
         return str(self.project_id)
+
+
+
+class SourceInformationData(models.Model):
+    """SourceInformationData model"""
+    sourceInformarion_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
+    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
+
+    def __str__(self):
+        """Return string representation of SourceInformationDAta"""
+        return self.value
+
+class TypeEnergyData(models.Model):
+    """TypeEnergyData model"""
+    type_energy_id = models.ForeignKey(TypeEnergy, on_delete=models.DO_NOTHING, null=True)
+    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
+
+    def __str__(self):
+        """Return string representation of SourceInformationDAta"""
+        return self.value

@@ -584,3 +584,50 @@ class TreatmentOfGeneratedWasteSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Handle updating a ECDP"""
         return super().update(instance, validated_data)
+
+
+class SourceInformationDataSerializer(serializers.ModelSerializer):
+    """Material Scheme a material scheme data object"""
+
+    class Meta:
+        model = models.SourceInformationData
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a material scheme data"""
+        source_information_data = models.SourceInformationData(
+            sourceInformarion_id=validated_data['sourceInformarion_id'],
+            potential_type_id=validated_data['potential_type_id'],
+            unit_id=validated_data['unit_id'],
+            value=validated_data['value']
+        )
+
+        source_information_data.save()
+        return source_information_data
+
+    def update(self, instance, validated_data):
+        """Handle updating a material"""
+        return super().update(instance, validated_data)
+
+class TypeEnergyDataSerializer(serializers.ModelSerializer):
+    """Material Scheme a material scheme data object"""
+
+    class Meta:
+        model = models.TypeEnergyData
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a material scheme data"""
+        type_energy_data = models.TypeEnergyData(
+            type_energy_id=validated_data['type_energy_id'],
+            potential_type_id=validated_data['potential_type_id'],
+            unit_id=validated_data['unit_id'],
+            value=validated_data['value']
+        )
+
+        type_energy_data.save()
+        return type_energy_data
+
+    def update(self, instance, validated_data):
+        """Handle updating a material"""
+        return super().update(instance, validated_data)
