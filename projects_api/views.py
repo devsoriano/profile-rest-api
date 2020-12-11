@@ -187,7 +187,6 @@ class TypeEnergyViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=id', )
 
-
 class ElectricityConsumptionDeconstructiveProcessViewSet(viewsets.ModelViewSet):
     """Handle creating and updating create ECDP"""
     serializer_class = serializers.ElectricityConsumptionDeconstructiveProcessSerializer
@@ -195,14 +194,12 @@ class ElectricityConsumptionDeconstructiveProcessViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=id', )
 
-
 class TreatmentOfGeneratedWasteViewSet(viewsets.ModelViewSet):
     """Handle creating and updating create TOGW"""
     serializer_class = serializers.TreatmentOfGeneratedWasteSerializer
     queryset = models.TreatmentOfGeneratedWaste.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('=id', )
-
 
 class SourceInformationDataViewSet(viewsets.ModelViewSet):
     """Handle creating and updating Source information data"""

@@ -551,7 +551,7 @@ class ElectricityConsumptionDeconstructiveProcessSerializer(serializers.ModelSer
             source_information_id=validated_data['source_information_id'],
             quantity=validated_data['quantity'],
             section_id=validated_data['section_id'],
-            stage=validated_data['project_id'],
+            project_id=validated_data['project_id'],
         )
 
         SSD.save()
