@@ -45,11 +45,11 @@ class HousingScheme(models.Model):
 class Project(models.Model):
     """Project model"""
     name_project = models.CharField(max_length=255)
-    use_id = models.ForeignKey(Use, on_delete=models.DO_NOTHING, null=True)
-    type_id = models.ForeignKey(TypeProject, on_delete=models.DO_NOTHING, null=True)
-    country_id = models.ForeignKey(Country, on_delete=models.DO_NOTHING, null=True)
-    useful_life_id = models.ForeignKey(UsefulLife, on_delete=models.DO_NOTHING, null=True)
-    housing_scheme_id = models.ForeignKey(HousingScheme, on_delete=models.DO_NOTHING, null=True)
+    use_id = models.ForeignKey(Use, on_delete=models.CASCADE, null=True)
+    type_id = models.ForeignKey(TypeProject, on_delete=models.CASCADE, null=True)
+    country_id = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
+    useful_life_id = models.ForeignKey(UsefulLife, on_delete=models.CASCADE, null=True)
+    housing_scheme_id = models.ForeignKey(HousingScheme, on_delete=models.CASCADE, null=True)
     builded_surface = models.IntegerField()
     living_area = models.IntegerField()
     tier = models.IntegerField()
@@ -101,7 +101,7 @@ class PotentialType(models.Model):
 class Material(models.Model):
     """Construction material model"""
     name_material = models.CharField(max_length=255)
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of name_material"""
@@ -149,13 +149,13 @@ class ConstructiveProcess(models.Model):
 
 class MaterialSchemeProject(models.Model):
     """MaterialSchemeProject model"""
-    material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING, null=True)
-    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
-    origin_id = models.ForeignKey(Origin, on_delete=models.DO_NOTHING, null=True)
+    material_id = models.ForeignKey(Material, on_delete=models.CASCADE, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    origin_id = models.ForeignKey(Origin, on_delete=models.CASCADE, null=True)
     construction_system = models.CharField(max_length=255, null=True)
     provider_distance = models.IntegerField(null=True)
     quantity = models.IntegerField(null=True)
-    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
@@ -164,10 +164,10 @@ class MaterialSchemeProject(models.Model):
 
 class MaterialSchemeData(models.Model):
     """MaterialSchemeData model"""
-    material_id = models.ForeignKey(Material, on_delete=models.DO_NOTHING, null=True)
-    standard_id = models.ForeignKey(Standard, on_delete=models.DO_NOTHING, null=True)
-    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    material_id = models.ForeignKey(Material, on_delete=models.CASCADE, null=True)
+    standard_id = models.ForeignKey(Standard, on_delete=models.CASCADE, null=True)
+    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.CASCADE, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
 
     def __str__(self):
@@ -176,14 +176,14 @@ class MaterialSchemeData(models.Model):
 
 class ConstructiveSystemElement(models.Model):
     """CSE model"""
-    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
-    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
-    constructive_process_id = models.ForeignKey(ConstructiveProcess, on_delete=models.DO_NOTHING, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
+    constructive_process_id = models.ForeignKey(ConstructiveProcess, on_delete=models.CASCADE, null=True)
     quantity =  models.IntegerField()
-    volume_unit_id = models.ForeignKey(VolumeUnit, on_delete=models.DO_NOTHING, null=True)
-    energy_unit_id = models.ForeignKey(EnergyUnit, on_delete=models.DO_NOTHING, null=True)
-    bulk_unit_id = models.ForeignKey(BulkUnit, on_delete=models.DO_NOTHING, null=True)
-    source_information_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
+    volume_unit_id = models.ForeignKey(VolumeUnit, on_delete=models.CASCADE, null=True)
+    energy_unit_id = models.ForeignKey(EnergyUnit, on_delete=models.CASCADE, null=True)
+    bulk_unit_id = models.ForeignKey(BulkUnit, on_delete=models.CASCADE, null=True)
+    source_information_id = models.ForeignKey(SourceInformation, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of ma"""
@@ -199,9 +199,9 @@ class SourcesElectricityConsumption(models.Model):
 
 class AnnualConsumptionRequired(models.Model):
     """ACR model"""
-    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
     quantity =  models.IntegerField()
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of ACR"""
@@ -217,10 +217,10 @@ class TypeEnergy(models.Model):
 
 class ElectricityConsumptionData(models.Model):
     """ECD model"""
-    annual_consumption_required_id = models.ForeignKey(AnnualConsumptionRequired, on_delete=models.DO_NOTHING, null=True)
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    annual_consumption_required_id = models.ForeignKey(AnnualConsumptionRequired, on_delete=models.CASCADE, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
     quantity =  models.IntegerField(null=True)
-    type = models.ForeignKey(TypeEnergy, on_delete=models.DO_NOTHING, null=True)
+    type = models.ForeignKey(TypeEnergy, on_delete=models.CASCADE, null=True)
     percentage = models.IntegerField(null=True)
 
     def __str__(self):
@@ -231,7 +231,7 @@ class StageSchemeData(models.Model):
     """SSD model"""
     name_stage = models.CharField(max_length=255, null=True)
     abbreviation = models.CharField(max_length=255, null=True)
-    unit_stage_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    unit_stage_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=23, null=True)
     stage = models.CharField(max_length=255, null=True)
 
@@ -241,11 +241,11 @@ class StageSchemeData(models.Model):
 
 class ElectricityConsumptionDeconstructiveProcess(models.Model):
     """"ECDP"""
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
-    source_information_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
+    source_information_id = models.ForeignKey(SourceInformation, on_delete=models.CASCADE, null=True)
     quantity = models.IntegerField(null=True)
-    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
-    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of ECP"""
@@ -256,8 +256,8 @@ class TreatmentOfGeneratedWaste(models.Model):
     landfill = models.IntegerField(null=True)
     recycling = models.IntegerField(null=True)
     reuse = models.IntegerField(null=True)
-    section_id = models.ForeignKey(Section, on_delete=models.DO_NOTHING, null=True)
-    project_id = models.ForeignKey(Project, on_delete=models.DO_NOTHING, null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of TOGW"""
@@ -267,9 +267,9 @@ class TreatmentOfGeneratedWaste(models.Model):
 
 class SourceInformationData(models.Model):
     """SourceInformationData model"""
-    sourceInformarion_id = models.ForeignKey(SourceInformation, on_delete=models.DO_NOTHING, null=True)
-    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    sourceInformarion_id = models.ForeignKey(SourceInformation, on_delete=models.CASCADE, null=True)
+    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.CASCADE, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
 
     def __str__(self):
@@ -278,9 +278,9 @@ class SourceInformationData(models.Model):
 
 class TypeEnergyData(models.Model):
     """TypeEnergyData model"""
-    type_energy_id = models.ForeignKey(TypeEnergy, on_delete=models.DO_NOTHING, null=True)
-    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.DO_NOTHING, null=True)
-    unit_id = models.ForeignKey(Unit, on_delete=models.DO_NOTHING, null=True)
+    type_energy_id = models.ForeignKey(TypeEnergy, on_delete=models.CASCADE, null=True)
+    potential_type_id = models.ForeignKey(PotentialType, on_delete=models.CASCADE, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
 
     def __str__(self):
