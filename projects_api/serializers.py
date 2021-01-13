@@ -2,9 +2,32 @@ from rest_framework import serializers
 
 from projects_api import models
 
+class UserPlatformSerializer(serializers.ModelSerializer):
+    """User Platform Serializer"""
+    class Meta:
+        model = models.UserPlatform
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """User Platform to create material scheme data"""
+        user = models.UserPlatform(
+            name = validated_data['name'],
+            email=validated_data['email'],
+            institution = validated_data['institution'],
+            sector = validated_data['sector'],
+            country = validated_data['country'],
+            password = validated_data['password'],
+        )
+
+        user.save()
+        return user
+
+    def update(self, instance, validated_data):
+        """Handle updating a user"""
+        return super().update(instance, validated_data)
+
 class UsesSerializer(serializers.ModelSerializer):
     """Serializes a section use"""
-
     class Meta:
         model = models.Use
         fields = '__all__'
@@ -24,7 +47,6 @@ class UsesSerializer(serializers.ModelSerializer):
 
 class TypeProjectsSerializer(serializers.ModelSerializer):
     """Serializes a type projects"""
-
     class Meta:
         model = models.TypeProject
         fields = '__all__'
@@ -44,7 +66,6 @@ class TypeProjectsSerializer(serializers.ModelSerializer):
 
 class CountriesSerializer(serializers.ModelSerializer):
     """Serializes a countries"""
-
     class Meta:
         model = models.Country
         fields = '__all__'
@@ -64,7 +85,6 @@ class CountriesSerializer(serializers.ModelSerializer):
 
 class UsefulLifeSerializer(serializers.ModelSerializer):
     """Serializes a useful life"""
-
     class Meta:
         model = models.UsefulLife
         fields = '__all__'
@@ -84,7 +104,6 @@ class UsefulLifeSerializer(serializers.ModelSerializer):
 
 class HousingSchemeSerializer(serializers.ModelSerializer):
     """Serializes a housing scheme"""
-
     class Meta:
         model = models.HousingScheme
         fields = '__all__'
@@ -102,9 +121,8 @@ class HousingSchemeSerializer(serializers.ModelSerializer):
         """Handle updating a country"""
         return super().update(instance, validated_data)
 
-class ProjetcsSerializer(serializers.ModelSerializer):
+class ProjectsSerializer(serializers.ModelSerializer):
     """Serializes a project object"""
-
     class Meta:
         model = models.Project
         fields = '__all__'
@@ -119,7 +137,9 @@ class ProjetcsSerializer(serializers.ModelSerializer):
             builded_surface=validated_data['builded_surface'],
             living_area=validated_data['living_area'],
             tier=validated_data['tier'],
-            useful_life_id=validated_data['useful_life_id']
+            useful_life_id=validated_data['useful_life_id'],
+            housing_scheme_id=validated_data['housing_scheme_id'],
+            user_platform_id=validated_data['user_platform_id']
         )
 
         project.save()
@@ -131,7 +151,6 @@ class ProjetcsSerializer(serializers.ModelSerializer):
 
 class SectionsSerializer(serializers.ModelSerializer):
     """Serializes a section section"""
-
     class Meta:
         model = models.Section
         fields = '__all__'
@@ -151,7 +170,6 @@ class SectionsSerializer(serializers.ModelSerializer):
 
 class OriginsSerializer(serializers.ModelSerializer):
     """Serializes a origin object"""
-
     class Meta:
         model = models.Origin
         fields = '__all__'
@@ -171,7 +189,6 @@ class OriginsSerializer(serializers.ModelSerializer):
 
 class UnitsSerializer(serializers.ModelSerializer):
     """Serializes a create unit"""
-
     class Meta:
         model = models.Unit
         fields = '__all__'
@@ -191,7 +208,6 @@ class UnitsSerializer(serializers.ModelSerializer):
 
 class StandardsSerializer(serializers.ModelSerializer):
     """Serializes a create standards"""
-
     class Meta:
         model = models.Standard
         fields = '__all__'
@@ -211,7 +227,6 @@ class StandardsSerializer(serializers.ModelSerializer):
 
 class PotentialTypesSerializer(serializers.ModelSerializer):
     """Serializes a potential types"""
-
     class Meta:
         model = models.PotentialType
         fields = '__all__'
@@ -231,7 +246,6 @@ class PotentialTypesSerializer(serializers.ModelSerializer):
 
 class MaterialsSerializer(serializers.ModelSerializer):
     """Serializes a section material"""
-
     class Meta:
         model = models.Material
         fields = '__all__'
@@ -252,7 +266,6 @@ class MaterialsSerializer(serializers.ModelSerializer):
 
 class VolumeUnitsSerializer(serializers.ModelSerializer):
     """Serializes a create volume unit"""
-
     class Meta:
         model = models.VolumeUnit
         fields = '__all__'
@@ -272,7 +285,6 @@ class VolumeUnitsSerializer(serializers.ModelSerializer):
 
 class EnergyUnitsSerializer(serializers.ModelSerializer):
     """Serializes a create energy unit"""
-
     class Meta:
         model = models.EnergyUnit
         fields = '__all__'
@@ -292,7 +304,6 @@ class EnergyUnitsSerializer(serializers.ModelSerializer):
 
 class BulkUnitsSerializer(serializers.ModelSerializer):
     """Serializes a create bulk unit"""
-
     class Meta:
         model = models.BulkUnit
         fields = '__all__'
@@ -312,7 +323,6 @@ class BulkUnitsSerializer(serializers.ModelSerializer):
 
 class SourceInformationSerializer(serializers.ModelSerializer):
     """Serializes a create source information"""
-
     class Meta:
         model = models.SourceInformation
         fields = '__all__'
@@ -332,7 +342,6 @@ class SourceInformationSerializer(serializers.ModelSerializer):
 
 class ConstructiveProcessSerializer(serializers.ModelSerializer):
     """Serializes a create constructive process"""
-
     class Meta:
         model = models.ConstructiveProcess
         fields = '__all__'
@@ -352,7 +361,6 @@ class ConstructiveProcessSerializer(serializers.ModelSerializer):
 
 class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
     """Material Scheme a material object"""
-
     class Meta:
         model = models.MaterialSchemeProject
         fields = '__all__'
@@ -366,7 +374,8 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             construction_system=validated_data['construction_system'],
             quantity=validated_data['quantity'],
             section_id=validated_data['section_id'],
-            provider_distance=validated_data['provider_distance']
+            provider_distance=validated_data['provider_distance'],
+            user_platform_id=validated_data['user_platform_id']
         )
 
         material_scheme.save()
@@ -378,7 +387,6 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
 
 class MaterialSchemeDataSerializer(serializers.ModelSerializer):
     """Material Scheme a material scheme data object"""
-
     class Meta:
         model = models.MaterialSchemeData
         fields = '__all__'
@@ -402,7 +410,6 @@ class MaterialSchemeDataSerializer(serializers.ModelSerializer):
 
 class ConstructiveSystemElementSerializer(serializers.ModelSerializer):
     """Serializer CSY"""
-
     class Meta:
         model = models.ConstructiveSystemElement
         fields = '__all__'
@@ -429,7 +436,6 @@ class ConstructiveSystemElementSerializer(serializers.ModelSerializer):
 
 class SourcesElectricityConsumptionSerializer(serializers.ModelSerializer):
     """Serializes a create SEC"""
-
     class Meta:
         model = models.SourcesElectricityConsumption
         fields = '__all__'
@@ -449,7 +455,6 @@ class SourcesElectricityConsumptionSerializer(serializers.ModelSerializer):
 
 class AnnualConsumptionRequiredSerializer(serializers.ModelSerializer):
     """Serializer ACR"""
-
     class Meta:
         model = models.AnnualConsumptionRequired
         fields = '__all__'
@@ -471,7 +476,6 @@ class AnnualConsumptionRequiredSerializer(serializers.ModelSerializer):
 
 class ElectricityConsumptionDataSerializer(serializers.ModelSerializer):
     """Serializer ECD"""
-
     class Meta:
         model = models.ElectricityConsumptionData
         fields = '__all__'
@@ -495,7 +499,6 @@ class ElectricityConsumptionDataSerializer(serializers.ModelSerializer):
 
 class StageSchemeDataSerializer(serializers.ModelSerializer):
     """Serializer SSD"""
-
     class Meta:
         model = models.StageSchemeData
         fields = '__all__'
@@ -519,7 +522,6 @@ class StageSchemeDataSerializer(serializers.ModelSerializer):
 
 class TypeEnergySerializer(serializers.ModelSerializer):
     """Serializes a type energy"""
-
     class Meta:
         model = models.TypeEnergy
         fields = '__all__'
@@ -539,7 +541,6 @@ class TypeEnergySerializer(serializers.ModelSerializer):
 
 class ElectricityConsumptionDeconstructiveProcessSerializer(serializers.ModelSerializer):
     """Serializer ECDP"""
-
     class Meta:
         model = models.ElectricityConsumptionDeconstructiveProcess
         fields = '__all__'
@@ -563,7 +564,6 @@ class ElectricityConsumptionDeconstructiveProcessSerializer(serializers.ModelSer
 
 class TreatmentOfGeneratedWasteSerializer(serializers.ModelSerializer):
     """Serializer TOGW"""
-
     class Meta:
         model = models.TreatmentOfGeneratedWaste
         fields = '__all__'
@@ -588,7 +588,6 @@ class TreatmentOfGeneratedWasteSerializer(serializers.ModelSerializer):
 
 class SourceInformationDataSerializer(serializers.ModelSerializer):
     """Material Scheme a material scheme data object"""
-
     class Meta:
         model = models.SourceInformationData
         fields = '__all__'
@@ -611,7 +610,6 @@ class SourceInformationDataSerializer(serializers.ModelSerializer):
 
 class TypeEnergyDataSerializer(serializers.ModelSerializer):
     """Material Scheme a material scheme data object"""
-
     class Meta:
         model = models.TypeEnergyData
         fields = '__all__'

@@ -12,6 +12,13 @@ from projects_api import models
 from projects_api import serializers
 from profiles_api import permissions
 
+class UserPlatformViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating user"""
+    serializer_class = serializers.UserPlatformSerializer
+    queryset = models.UserPlatform.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('email', )
+
 class UsesViewSet(viewsets.ModelViewSet):
     """Handle creating and updating uses"""
     serializer_class = serializers.UsesSerializer
@@ -49,10 +56,10 @@ class HousingSchemeViewSet(viewsets.ModelViewSet):
 
 class ProjectsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating profiles"""
-    serializer_class = serializers.ProjetcsSerializer
+    serializer_class = serializers.ProjectsSerializer
     queryset = models.Project.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('=id',)
+    search_fields = ('=id')
 
 class MaterialsViewSet(viewsets.ModelViewSet):
     """Handle creating and updating materials"""

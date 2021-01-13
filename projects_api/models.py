@@ -2,6 +2,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class UserPlatform(models.Model):
+    """UserPlatform model"""
+    name = models.CharField(max_length=255, null=True)
+    email = models.CharField(max_length=255, null=True)
+    institution = models.CharField(max_length=255, null=True)
+    sector = models.CharField(max_length=255, null=True)
+    country = models.CharField(max_length=255, null=True)
+    password = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        """Return string representation of user"""
+        return self.email
+
 class Use(models.Model):
     """Construction use model"""
     name_use = models.CharField(max_length=255)
@@ -48,15 +61,16 @@ class Project(models.Model):
     use_id = models.ForeignKey(Use, on_delete=models.CASCADE, null=True)
     type_id = models.ForeignKey(TypeProject, on_delete=models.CASCADE, null=True)
     country_id = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
+    builded_surface = models.IntegerField(null=True)
+    living_area = models.IntegerField(null=True)
+    tier = models.IntegerField(null=True)
     useful_life_id = models.ForeignKey(UsefulLife, on_delete=models.CASCADE, null=True)
     housing_scheme_id = models.ForeignKey(HousingScheme, on_delete=models.CASCADE, null=True)
-    builded_surface = models.IntegerField()
-    living_area = models.IntegerField()
-    tier = models.IntegerField()
+    user_platform_id = models.ForeignKey(UserPlatform, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of project"""
-        return self.name_project
+        return self.user_platform_id
 
 class Section(models.Model):
     """Section model"""
@@ -262,8 +276,6 @@ class TreatmentOfGeneratedWaste(models.Model):
     def __str__(self):
         """Return string representation of TOGW"""
         return str(self.project_id)
-
-
 
 class SourceInformationData(models.Model):
     """SourceInformationData model"""

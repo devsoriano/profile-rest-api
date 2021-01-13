@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 from projects_api import views
 
 router = DefaultRouter()
+router.register('users-platform', views.UserPlatformViewSet)
 router.register('uses', views.UsesViewSet)
 router.register('type-project', views.TypeProjectsViewSet)
 router.register('countries', views.CountriesViewSet)
