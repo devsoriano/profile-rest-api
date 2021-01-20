@@ -360,7 +360,7 @@ class ConstructiveProcessSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
-    """Material Scheme a material object"""
+    """Material Scheme project object"""
     class Meta:
         model = models.MaterialSchemeProject
         fields = '__all__'
@@ -372,10 +372,10 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             project_id=validated_data['project_id'],
             origin_id=validated_data['origin_id'],
             construction_system=validated_data['construction_system'],
+            provider_distance=validated_data['provider_distance'],
             quantity=validated_data['quantity'],
             section_id=validated_data['section_id'],
-            provider_distance=validated_data['provider_distance'],
-            user_platform_id=validated_data['user_platform_id']
+            value=validated_data['value'],
         )
 
         material_scheme.save()

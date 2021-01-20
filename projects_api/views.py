@@ -139,7 +139,7 @@ class ConstructiveProcessViewSet(viewsets.ModelViewSet):
     search_fields = ('name_constructive_process', )
 
 class MaterialSchemeProjectViewSet(viewsets.ModelViewSet):
-    """Handle creating and updating materials"""
+    """Handle creating and updating material scheme project"""
     serializer_class = serializers.MaterialSchemeProjectSerializer
     queryset = models.MaterialSchemeProject.objects.all()
     filter_backends = (filters.SearchFilter,)
@@ -157,7 +157,7 @@ class ConstructiveSystemElementViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.ConstructiveSystemElementSerializer
     queryset = models.ConstructiveSystemElement.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('project_id', )
+    search_fields = ('project__id', )
 
 class SourcesElectricityConsumptionViewSet(viewsets.ModelViewSet):
     """Handle creating and updating create source electricity consumption"""

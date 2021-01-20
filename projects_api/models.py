@@ -70,7 +70,7 @@ class Project(models.Model):
 
     def __str__(self):
         """Return string representation of project"""
-        return self.user_platform_id
+        return str(self.name_project)
 
 class Section(models.Model):
     """Section model"""
@@ -162,7 +162,7 @@ class ConstructiveProcess(models.Model):
         return self.name_constructive_process
 
 class MaterialSchemeProject(models.Model):
-    """MaterialSchemeProject model"""
+    """Material SchemeProject model"""
     material_id = models.ForeignKey(Material, on_delete=models.CASCADE, null=True)
     project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
     origin_id = models.ForeignKey(Origin, on_delete=models.CASCADE, null=True)
