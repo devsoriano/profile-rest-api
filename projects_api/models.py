@@ -236,6 +236,7 @@ class ElectricityConsumptionData(models.Model):
     quantity =  models.IntegerField(null=True)
     type = models.ForeignKey(TypeEnergy, on_delete=models.CASCADE, null=True)
     percentage = models.IntegerField(null=True)
+    source = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         """Return string representation of ECD"""

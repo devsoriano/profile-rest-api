@@ -487,7 +487,8 @@ class ElectricityConsumptionDataSerializer(serializers.ModelSerializer):
             unit_id=validated_data['unit_id'],
             quantity=validated_data['quantity'],
             type=validated_data['type'],
-            percentage=validated_data['percentage']
+            percentage=validated_data['percentage'],
+            source=validated_data['source']
         )
 
         ECD.save()
