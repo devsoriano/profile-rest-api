@@ -176,6 +176,21 @@ class MaterialSchemeProject(models.Model):
         """Return string representation of material"""
         return str(self.material_id)
 
+class MaterialSchemeProjectOrigianal(models.Model):
+    """Material SchemeProject model"""
+    material_id = models.ForeignKey(Material, on_delete=models.CASCADE, null=True)
+    project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
+    origin_id = models.ForeignKey(Origin, on_delete=models.CASCADE, null=True)
+    construction_system = models.CharField(max_length=255, null=True)
+    provider_distance = models.IntegerField(null=True)
+    quantity = models.IntegerField(null=True)
+    section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+
+    def __str__(self):
+        """Return string representation of material"""
+        return str(self.material_id)
+
 class MaterialSchemeData(models.Model):
     """MaterialSchemeData model"""
     material_id = models.ForeignKey(Material, on_delete=models.CASCADE, null=True)
@@ -299,3 +314,30 @@ class TypeEnergyData(models.Model):
     def __str__(self):
         """Return string representation of SourceInformationDAta"""
         return self.value
+
+class State(models.Model):
+    """State model"""
+    name_state = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of state"""
+        return self.name_state
+
+class City(models.Model):
+    """City model"""
+    name_city = models.CharField(max_length=255)
+    state_id = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        """Return string representation of city"""
+        return self.name_city
+
+class LocalDistance(models.Model):
+    """Local distance model"""
+    distance = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    city_id_origin = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
+    city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created',on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        """Return string representation of state"""
+        return str(distance)

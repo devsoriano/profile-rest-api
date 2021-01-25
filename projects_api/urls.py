@@ -24,6 +24,7 @@ router.register('bulk-units', views.BulkUnitsViewSet)
 router.register('source-information', views.SourceInformationViewSet)
 router.register('constructive-process', views.ConstructiveProcessViewSet)
 router.register('material-scheme-project', views.MaterialSchemeProjectViewSet)
+router.register('material-scheme-project-original', views.MaterialSchemeProjectOriginalViewSet)
 router.register('material-scheme-data', views.MaterialSchemeDataViewSet)
 router.register('constructive-system-element', views.ConstructiveSystemElementViewSet)
 router.register('sources-electricity-consumption', views.SourcesElectricityConsumptionViewSet)
@@ -35,6 +36,9 @@ router.register('electricity-consumption-deconstructive-process', views.Electric
 router.register('treatment-of-generate-wasted', views.TreatmentOfGeneratedWasteViewSet)
 router.register('source-information-data', views.SourceInformationDataViewSet)
 router.register('type-energy-data', views.TypeEnergyDataViewSet)
+router.register('states', views.StatesViewSet)
+router.register('cities', views.CitiesViewSet)
+router.register('local-distances', views.LocalDistancesViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

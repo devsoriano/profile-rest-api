@@ -385,6 +385,32 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
         """Handle updating a material"""
         return super().update(instance, validated_data)
 
+class MaterialSchemeProjectOriginalSerializer(serializers.ModelSerializer):
+    """Material Scheme project object"""
+    class Meta:
+        model = models.MaterialSchemeProjectOrigianal
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a material."""
+        material_scheme = models.MaterialSchemeProjectOrigianal(
+            material_id=validated_data['material_id'],
+            project_id=validated_data['project_id'],
+            origin_id=validated_data['origin_id'],
+            construction_system=validated_data['construction_system'],
+            provider_distance=validated_data['provider_distance'],
+            quantity=validated_data['quantity'],
+            section_id=validated_data['section_id'],
+            value=validated_data['value'],
+        )
+
+        material_scheme.save()
+        return material_scheme
+
+    def update(self, instance, validated_data):
+        """Handle updating a material"""
+        return super().update(instance, validated_data)
+
 class MaterialSchemeDataSerializer(serializers.ModelSerializer):
     """Material Scheme a material scheme data object"""
     class Meta:
@@ -629,4 +655,64 @@ class TypeEnergyDataSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """Handle updating a material"""
+        return super().update(instance, validated_data)
+
+class StatesSerializer(serializers.ModelSerializer):
+    """Serializes a states"""
+    class Meta:
+        model = models.State
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        state = models.State(
+            name_state = validated_data['name_state']
+        )
+
+        state.save()
+        return state
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class CitiesSerializer(serializers.ModelSerializer):
+    """Serializes a cities"""
+    class Meta:
+        model = models.City
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        city = models.City(
+            name_city = validated_data['name_city'],
+            state_id = validated_data['state_id']
+        )
+
+        city.save()
+        return city
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class LocalDistancesSerializer(serializers.ModelSerializer):
+    """Serializes a local distance"""
+    class Meta:
+        model = models.LocalDistance
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create local distance"""
+        distance = models.LocalDistance(
+            distance = validated_data['distance'],
+            city_id_origin = validated_data['city_id_origin'],
+            city_id_end = validated_data['city_id_end']
+        )
+
+        distance.save()
+        return distance
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
         return super().update(instance, validated_data)

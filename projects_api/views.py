@@ -145,6 +145,13 @@ class MaterialSchemeProjectViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('material_id', )
 
+class MaterialSchemeProjectOriginalViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating material scheme project"""
+    serializer_class = serializers.MaterialSchemeProjectOriginalSerializer
+    queryset = models.MaterialSchemeProjectOrigianal.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('material_id', )
+
 class MaterialSchemeDataViewSet(viewsets.ModelViewSet):
     """Handle creating and updating material scheme data"""
     serializer_class = serializers.MaterialSchemeDataSerializer
@@ -221,3 +228,24 @@ class TypeEnergyDataViewSet(viewsets.ModelViewSet):
     queryset = models.TypeEnergyData.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('value', )
+
+class StatesViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating states"""
+    serializer_class = serializers.StatesSerializer
+    queryset = models.State.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', )
+
+class CitiesViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating cities"""
+    serializer_class = serializers.CitiesSerializer
+    queryset = models.City.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', )
+
+class LocalDistancesViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating local distances"""
+    serializer_class = serializers.LocalDistancesSerializer
+    queryset = models.LocalDistance.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', )
