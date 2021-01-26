@@ -26,6 +26,66 @@ class UserPlatformSerializer(serializers.ModelSerializer):
         """Handle updating a user"""
         return super().update(instance, validated_data)
 
+class StatesSerializer(serializers.ModelSerializer):
+    """Serializes a states"""
+    class Meta:
+        model = models.State
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        state = models.State(
+            name_state = validated_data['name_state']
+        )
+
+        state.save()
+        return state
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class CitiesSerializer(serializers.ModelSerializer):
+    """Serializes a cities"""
+    class Meta:
+        model = models.City
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        city = models.City(
+            name_city = validated_data['name_city'],
+            state_id = validated_data['state_id']
+        )
+
+        city.save()
+        return city
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
+class LocalDistancesSerializer(serializers.ModelSerializer):
+    """Serializes a local distance"""
+    class Meta:
+        model = models.LocalDistance
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create local distance"""
+        distance = models.LocalDistance(
+            distance = validated_data['distance'],
+            city_id_origin = validated_data['city_id_origin'],
+            city_id_end = validated_data['city_id_end']
+        )
+
+        distance.save()
+        return distance
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
 class UsesSerializer(serializers.ModelSerializer):
     """Serializes a section use"""
     class Meta:
@@ -139,7 +199,10 @@ class ProjectsSerializer(serializers.ModelSerializer):
             tier=validated_data['tier'],
             useful_life_id=validated_data['useful_life_id'],
             housing_scheme_id=validated_data['housing_scheme_id'],
-            user_platform_id=validated_data['user_platform_id']
+            user_platform_id=validated_data['user_platform_id'],
+            city_id_origin=validated_data['city_id_origin'],
+            citi_id_end=validated_data['citi_id_end'],
+            distance=validated_data['distance']
         )
 
         project.save()
@@ -655,64 +718,4 @@ class TypeEnergyDataSerializer(serializers.ModelSerializer):
 
     def update(self, instance, validated_data):
         """Handle updating a material"""
-        return super().update(instance, validated_data)
-
-class StatesSerializer(serializers.ModelSerializer):
-    """Serializes a states"""
-    class Meta:
-        model = models.State
-        fields = '__all__'
-
-    def create(self, validated_data):
-        """Used to create origin"""
-        state = models.State(
-            name_state = validated_data['name_state']
-        )
-
-        state.save()
-        return state
-
-    def update(self, instance, validated_data):
-        """Handle updating a section"""
-        return super().update(instance, validated_data)
-
-class CitiesSerializer(serializers.ModelSerializer):
-    """Serializes a cities"""
-    class Meta:
-        model = models.City
-        fields = '__all__'
-
-    def create(self, validated_data):
-        """Used to create origin"""
-        city = models.City(
-            name_city = validated_data['name_city'],
-            state_id = validated_data['state_id']
-        )
-
-        city.save()
-        return city
-
-    def update(self, instance, validated_data):
-        """Handle updating a section"""
-        return super().update(instance, validated_data)
-
-class LocalDistancesSerializer(serializers.ModelSerializer):
-    """Serializes a local distance"""
-    class Meta:
-        model = models.LocalDistance
-        fields = '__all__'
-
-    def create(self, validated_data):
-        """Used to create local distance"""
-        distance = models.LocalDistance(
-            distance = validated_data['distance'],
-            city_id_origin = validated_data['city_id_origin'],
-            city_id_end = validated_data['city_id_end']
-        )
-
-        distance.save()
-        return distance
-
-    def update(self, instance, validated_data):
-        """Handle updating a section"""
         return super().update(instance, validated_data)
