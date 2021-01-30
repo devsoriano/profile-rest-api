@@ -201,6 +201,8 @@ class MaterialSchemeProject(models.Model):
     quantity = models.IntegerField(null=True)
     section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    distanceInit = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    distanceEnd = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
         """Return string representation of material"""
@@ -216,6 +218,8 @@ class MaterialSchemeProjectOrigianal(models.Model):
     quantity = models.IntegerField(null=True)
     section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    distanceInit = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    distanceEnd = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
         """Return string representation of material"""
