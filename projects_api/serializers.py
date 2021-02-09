@@ -143,6 +143,26 @@ class CountriesSerializer(serializers.ModelSerializer):
         """Handle updating a country"""
         return super().update(instance, validated_data)
 
+class ExternalDistanceSerializer(serializers.ModelSerializer):
+    """Serializes external distance"""
+    class Meta:
+        model = models.ExternalDistance
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create type project"""
+        distance = models.ExternalDistance(
+            distance=validated_data['distance'],
+            country_id_origin=validated_data['country_id_origin']
+        )
+
+        distance.save()
+        return distance
+
+    def update(self, instance, validated_data):
+        """Handle updating a country"""
+        return super().update(instance, validated_data)
+
 class UsefulLifeSerializer(serializers.ModelSerializer):
     """Serializes a useful life"""
     class Meta:

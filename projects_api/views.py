@@ -40,6 +40,13 @@ class CountriesViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('name_country', )
 
+class ExternalDistanceViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating countries"""
+    serializer_class = serializers.ExternalDistanceSerializer
+    queryset = models.ExternalDistance.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', )
+
 class UsefulLifeViewSet(viewsets.ModelViewSet):
     """Handle creating and updating useful life"""
     serializer_class = serializers.UsefulLifeSerializer

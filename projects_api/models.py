@@ -66,6 +66,15 @@ class Country(models.Model):
         """Return string representation of country model"""
         return self.name_country
 
+class ExternalDistance(models.Model):
+    """Local distance model"""
+    distance = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    country_id_origin = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
+
+    def __str__(self):
+        """Return string representation of state"""
+        return str(distance)
+
 class UsefulLife(models.Model):
     """Construction useful life model"""
     name_useful_life = models.CharField(max_length=255)
