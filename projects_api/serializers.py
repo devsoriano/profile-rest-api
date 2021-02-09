@@ -460,7 +460,8 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             section_id=validated_data['section_id'],
             value=validated_data['value'],
             distanceInit=validated_data['distanceInit'],
-            distanceEnd=validated_data['distanceEnd']
+            distanceEnd=validated_data['distanceEnd'],
+            replaces=validated_data['replaces']
         )
 
         material_scheme.save()

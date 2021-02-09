@@ -212,6 +212,7 @@ class MaterialSchemeProject(models.Model):
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     distanceInit = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     distanceEnd = models.DecimalField(max_digits=45, decimal_places=35, null=True)
+    replaces = models.IntegerField(null=True)
 
     def __str__(self):
         """Return string representation of material"""
