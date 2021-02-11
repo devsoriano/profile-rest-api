@@ -451,6 +451,7 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
         """Used to create a material."""
         material_scheme = models.MaterialSchemeProject(
             material_id=validated_data['material_id'],
+            comercial_name=validated_data['comercial_name'],
             project_id=validated_data['project_id'],
             origin_id=validated_data['origin_id'],
             construction_system=validated_data['construction_system'],
@@ -482,6 +483,7 @@ class MaterialSchemeProjectOriginalSerializer(serializers.ModelSerializer):
         """Used to create a material."""
         material_scheme = models.MaterialSchemeProjectOrigianal(
             material_id=validated_data['material_id'],
+            comercial_name=validated_data['comercial_name'],
             project_id=validated_data['project_id'],
             origin_id=validated_data['origin_id'],
             construction_system=validated_data['construction_system'],
@@ -490,7 +492,10 @@ class MaterialSchemeProjectOriginalSerializer(serializers.ModelSerializer):
             section_id=validated_data['section_id'],
             value=validated_data['value'],
             distanceInit=validated_data['distanceInit'],
-            distanceEnd=validated_data['distanceEnd']
+            distanceEnd=validated_data['distanceEnd'],
+            replaces=validated_data['replaces'],
+            city_id_origin=validated_data['city_id_origin'],
+            citi_id_end=validated_data['citi_id_end']
         )
 
         material_scheme.save()
