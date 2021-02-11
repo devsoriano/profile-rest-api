@@ -221,7 +221,6 @@ class ProjectsSerializer(serializers.ModelSerializer):
             housing_scheme_id=validated_data['housing_scheme_id'],
             user_platform_id=validated_data['user_platform_id'],
             city_id_origin=validated_data['city_id_origin'],
-            citi_id_end=validated_data['citi_id_end'],
             distance=validated_data['distance']
         )
 
@@ -461,7 +460,9 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             value=validated_data['value'],
             distanceInit=validated_data['distanceInit'],
             distanceEnd=validated_data['distanceEnd'],
-            replaces=validated_data['replaces']
+            replaces=validated_data['replaces'],
+            city_id_origin=validated_data['city_id_origin'],
+            citi_id_end=validated_data['citi_id_end']
         )
 
         material_scheme.save()
