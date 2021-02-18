@@ -459,11 +459,11 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             quantity=validated_data['quantity'],
             section_id=validated_data['section_id'],
             value=validated_data['value'],
-            distanceInit=validated_data['distanceInit'],
-            distanceEnd=validated_data['distanceEnd'],
+            distance_init=validated_data['distance_init'],
+            distance_end=validated_data['distance_end'],
             replaces=validated_data['replaces'],
             city_id_origin=validated_data['city_id_origin'],
-            citi_id_end=validated_data['citi_id_end']
+            city_id_end=validated_data['city_id_end']
         )
 
         material_scheme.save()
@@ -491,11 +491,11 @@ class MaterialSchemeProjectOriginalSerializer(serializers.ModelSerializer):
             quantity=validated_data['quantity'],
             section_id=validated_data['section_id'],
             value=validated_data['value'],
-            distanceInit=validated_data['distanceInit'],
-            distanceEnd=validated_data['distanceEnd'],
+            distance_init=validated_data['distance_init'],
+            distance_end=validated_data['distance_end'],
             replaces=validated_data['replaces'],
             city_id_origin=validated_data['city_id_origin'],
-            citi_id_end=validated_data['citi_id_end']
+            city_id_end=validated_data['city_id_end']
         )
 
         material_scheme.save()
