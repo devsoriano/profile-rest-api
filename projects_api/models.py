@@ -235,7 +235,7 @@ class MaterialSchemeProjectOrigianal(models.Model):
     distance_end = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     replaces = models.IntegerField(null=True)
     city_id_origin = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
-    citi_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created',on_delete=models.CASCADE, null=True)
+    city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created',on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of material"""
