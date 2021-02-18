@@ -15,6 +15,14 @@ class UserPlatform(models.Model):
         """Return string representation of user"""
         return self.email
 
+class Transport(models.Model):
+    """Transport model"""
+    name_transport = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string representation of transport"""
+        return self.name_transport
+
 class State(models.Model):
     """State model"""
     name_state = models.CharField(max_length=255)
@@ -214,7 +222,9 @@ class MaterialSchemeProject(models.Model):
     distance_end = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     replaces = models.IntegerField(null=True)
     city_id_origin = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
-    city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created',on_delete=models.CASCADE, null=True)
+    city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created', on_delete=models.CASCADE, null=True)
+    transport_id_origin = models.ForeignKey(Transport, on_delete=models.CASCADE, null=True)
+    transport_id_end = models.ForeignKey(Transport,related_name='%(class)s_requests_created_second', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of material"""
@@ -236,6 +246,8 @@ class MaterialSchemeProjectOrigianal(models.Model):
     replaces = models.IntegerField(null=True)
     city_id_origin = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
     city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created',on_delete=models.CASCADE, null=True)
+    transport_id_origin = models.ForeignKey(Transport, on_delete=models.CASCADE, null=True)
+    transport_id_end = models.ForeignKey(Transport,related_name='%(class)s_requests_created_second', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         """Return string representation of material"""

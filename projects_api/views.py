@@ -19,6 +19,13 @@ class UserPlatformViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('email', )
 
+class TransportsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating transports"""
+    serializer_class = serializers.TransportsSerializer
+    queryset = models.Transport.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', )
+
 class UsesViewSet(viewsets.ModelViewSet):
     """Handle creating and updating uses"""
     serializer_class = serializers.UsesSerializer

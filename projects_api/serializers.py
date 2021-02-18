@@ -26,6 +26,25 @@ class UserPlatformSerializer(serializers.ModelSerializer):
         """Handle updating a user"""
         return super().update(instance, validated_data)
 
+class TransportsSerializer(serializers.ModelSerializer):
+    """Serializes a transports"""
+    class Meta:
+        model = models.Transport
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        transport = models.Transport(
+            name_transport = validated_data['name_transport'],
+        )
+
+        transport.save()
+        return transport
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)
+
 class StatesSerializer(serializers.ModelSerializer):
     """Serializes a states"""
     class Meta:
