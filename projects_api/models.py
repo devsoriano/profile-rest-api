@@ -78,6 +78,7 @@ class ExternalDistance(models.Model):
     """Local distance model"""
     distance = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     country_id_origin = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
+    region = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         """Return string representation of state"""

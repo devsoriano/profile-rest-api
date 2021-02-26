@@ -172,7 +172,8 @@ class ExternalDistanceSerializer(serializers.ModelSerializer):
         """Used to create type project"""
         distance = models.ExternalDistance(
             distance=validated_data['distance'],
-            country_id_origin=validated_data['country_id_origin']
+            country_id_origin=validated_data['country_id_origin'],
+            region=validated_data['country_id_origin']
         )
 
         distance.save()
