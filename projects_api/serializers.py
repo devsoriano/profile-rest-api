@@ -336,7 +336,8 @@ class PotentialTypesSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """Used to create potential type"""
         potentialType = models.PotentialType(
-            name_potential_type=validated_data['name_potential_type']
+            name_potential_type=validated_data['name_potential_type'],
+            name_complete_potential_type=validated_data['name_potential_type']
         )
 
         potentialType.save()
