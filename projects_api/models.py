@@ -151,10 +151,12 @@ class Standard(models.Model):
         """Return string representation of name standard"""
         return self.name_standard
 
+
 class PotentialType(models.Model):
     """Construction potential type model"""
     name_potential_type = models.CharField(max_length=255, null=True)
     name_complete_potential_type = models.CharField(max_length=255, null=True)
+    unit_potential_type = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         """Return string representation of name potential type"""
