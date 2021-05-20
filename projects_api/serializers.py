@@ -485,7 +485,9 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             distance_end=validated_data['distance_end'],
             replaces=validated_data['replaces'],
             city_id_origin=validated_data['city_id_origin'],
-            city_id_end=validated_data['city_id_end']
+            city_id_end=validated_data['city_id_end'],
+            unit_text=validated_data['unit_text'],
+            description_material=validated_data['description_material']
         )
 
         material_scheme.save()
