@@ -226,6 +226,7 @@ class MaterialSchemeProject(models.Model):
     distance_end = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     replaces = models.IntegerField(null=True)
     city_id_origin = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
+    state_id_origin = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
     city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created', on_delete=models.CASCADE, null=True)
     transport_id_origin = models.ForeignKey(Transport, on_delete=models.CASCADE, null=True)
     transport_id_end = models.ForeignKey(Transport, related_name='%(class)s_requests_created_second', on_delete=models.CASCADE, null=True)
