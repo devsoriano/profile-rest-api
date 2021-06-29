@@ -358,7 +358,8 @@ class MaterialsSerializer(serializers.ModelSerializer):
         """Used to create material"""
         material = models.Material(
             name_material=validated_data['name_material'],
-            unit_id=validated_data['unit_id']
+            unit_id=validated_data['unit_id'],
+            database_from=validated_data['database_from']
         )
 
         material.save()

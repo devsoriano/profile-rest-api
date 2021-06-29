@@ -164,8 +164,9 @@ class PotentialType(models.Model):
 
 class Material(models.Model):
     """Construction material model"""
-    name_material = models.CharField(max_length=255)
+    name_material = models.CharField(max_length=255, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
+    database_from = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         """Return string representation of name_material"""
