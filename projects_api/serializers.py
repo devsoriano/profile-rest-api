@@ -776,3 +776,50 @@ class TypeEnergyDataSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Handle updating a material"""
         return super().update(instance, validated_data)
+
+
+class AirportsSerializer(serializers.ModelSerializer):
+    """Airport scheme a data object"""
+    class Meta:
+        model = models.Airports
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """"Used to create a airport data"""
+        airport_data = models.Airports(
+            country_code=validated_data['country_code'],
+            country=validated_data['country'],
+            city=validated_data['city'],
+            airport=validated_data['airport']
+        )
+
+        airport_data.save()
+        return airport_data
+
+    def update(self, instance, validated_data):
+        """Handle updating a airport"""
+        return super().update(instance, validated_data)
+
+
+class FlightCostsSerializer(serializers.ModelSerializer):
+    """Flight Costs scheme a data object"""
+    class Meta:
+        model: models.FlightCosts
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create a fligth cost data"""
+        flight_cost_data = models.FlightCosts(
+            departure_airport_id=validated_data['departure_airport_id'],
+            arrival_airport_id=validated_data['arrival_airport_id'],
+            departure_time=validated_data['departure_time'],
+            departure_date=validated_data['departure_date'],
+            cost=validated_data['cost']
+        )
+
+        flight_cost_data.save()
+        return flight_cost_data
+
+    def update(self, instance, validated_data):
+        """Handle updating a flight cost"""
+        return super().update(instance, validated_data)

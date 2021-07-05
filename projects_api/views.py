@@ -263,3 +263,20 @@ class LocalDistancesViewSet(viewsets.ModelViewSet):
     queryset = models.LocalDistance.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('id', )
+
+
+class AirportsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating airports"""
+    serializer_class = serializers.AirportsSerializer
+    queryset = models.Airports.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id')
+
+
+class FlightCostsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating flight costs"""
+    serializer_class = serializers.FlightCostsSerializer
+    queryset = models.FlightCosts.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ['=departure_airport_id', '=arrival_airport_id']
+    

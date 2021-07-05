@@ -384,3 +384,33 @@ class TypeEnergyData(models.Model):
     def __str__(self):
         """Return string representation of SourceInformationDAta"""
         return self.value
+
+
+class Airports(models.Model):
+    """Airports model"""
+    country_code = models.CharField(max_length=255, null=True)
+    country = models.CharField(max_length=255, null=True)
+    city = models.CharField(max_length=255, null=True)
+    airport = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        """Return string representation"""
+        return self.value
+
+
+class FlightCosts(models.Model):
+    """FlightCosts model"""
+    departure_airport_id = models.ForeignKey(
+        Airports, on_delete=models.CASCADE, null=True
+    )
+    arrival_airport_id = models.ForeignKey(
+        Airports, related_name='%(class)s_requests_created',
+        on_delete=models.CASCADE, null=True
+    )
+    departure_time = models.CharField(max_length=255, null=True)
+    departure_date = models.CharField(max_length=255, null=True)
+    cost = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        """Return string representation"""
+        return self.value
