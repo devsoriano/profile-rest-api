@@ -60,6 +60,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "https://evamed-test.herokuapp.com",
     "https://evamed.herokuapp.com"
+    "http://localhost:8080"
 ]
 
 ROOT_URLCONF = 'profiles_project.urls'
