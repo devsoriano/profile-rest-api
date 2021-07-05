@@ -404,7 +404,7 @@ class FlightCosts(models.Model):
         Airports, on_delete=models.CASCADE, null=True
     )
     arrival_airport_id = models.ForeignKey(
-        Airports, related_name='%(class)s_requests_created',
+        Airports, related_name='%(class)s_requests_created_unique',
         on_delete=models.CASCADE, null=True
     )
     departure_time = models.CharField(max_length=255, null=True)
