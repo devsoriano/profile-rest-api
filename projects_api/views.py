@@ -270,7 +270,7 @@ class AirportsViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.AirportsSerializer
     queryset = models.Airports.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('id')
+    search_fields = ('=id',)
 
 
 class FlightCostsViewSet(viewsets.ModelViewSet):
@@ -279,4 +279,3 @@ class FlightCostsViewSet(viewsets.ModelViewSet):
     queryset = models.FlightCosts.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ['=departure_airport_id', '=arrival_airport_id']
-    
