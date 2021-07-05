@@ -395,7 +395,7 @@ class Airports(models.Model):
 
     def __str__(self):
         """Return string representation"""
-        return self.value
+        return self.airport
 
 
 class FlightCosts(models.Model):
