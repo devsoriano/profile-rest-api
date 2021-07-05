@@ -802,13 +802,13 @@ class AirportsSerializer(serializers.ModelSerializer):
 
 
 class FlightCostsSerializer(serializers.ModelSerializer):
-    """Flight Costs scheme a data object"""
+    """FlightCostsSerializer scheme a data object"""
     class Meta:
-        model: models.FlightCosts
+        model = models.FlightCosts
         fields = '__all__'
 
     def create(self, validated_data):
-        """Used to create a fligth cost data"""
+        """"Used to create a FlightCosts data"""
         flight_cost_data = models.FlightCosts(
             departure_airport_id=validated_data['departure_airport_id'],
             arrival_airport_id=validated_data['arrival_airport_id'],
@@ -821,5 +821,5 @@ class FlightCostsSerializer(serializers.ModelSerializer):
         return flight_cost_data
 
     def update(self, instance, validated_data):
-        """Handle updating a flight cost"""
+        """Handle updating a FlightCosts"""
         return super().update(instance, validated_data)
