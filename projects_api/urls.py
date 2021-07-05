@@ -42,7 +42,7 @@ router.register('states', views.StatesViewSet)
 router.register('cities', views.CitiesViewSet)
 router.register('local-distances', views.LocalDistancesViewSet)
 router.register('airports', views.AirportsViewSet)
-router.register('flight-costs', views.FlightCostsViewSet)
+router.register('flight-costs', views.FlightInfoViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

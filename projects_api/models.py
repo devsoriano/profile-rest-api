@@ -388,7 +388,7 @@ class TypeEnergyData(models.Model):
 
 class Airports(models.Model):
     """Airports model"""
-    country_code = models.CharField(max_length=255, null=True)
+    countryCode = models.CharField(max_length=255, null=True)
     country = models.CharField(max_length=255, null=True)
     city = models.CharField(max_length=255, null=True)
     airport = models.CharField(max_length=255, null=True)
@@ -398,19 +398,20 @@ class Airports(models.Model):
         return self.airport
 
 
-class FlightCosts(models.Model):
-    """FlightCosts model"""
-    departure_airport_id = models.ForeignKey(
+class FlightInfo(models.Model):
+    """FlightInfo model"""
+    departureAirportId = models.ForeignKey(
         Airports, on_delete=models.CASCADE, null=True
     )
-    arrival_airport_id = models.ForeignKey(
+    arrivalAirportId = models.ForeignKey(
         Airports, related_name='%(class)s_requests_created_unique',
         on_delete=models.CASCADE, null=True
     )
-    departure_time = models.CharField(max_length=255, null=True)
-    departure_date = models.CharField(max_length=255, null=True)
+    departureTime = models.CharField(max_length=255, null=True)
+    departureDate = models.CharField(max_length=255, null=True)
     cost = models.CharField(max_length=255, null=True)
+    img = models.TextField(null=True)
 
     def __str__(self):
         """Return string representation"""
-        return self.value
+        return self.img

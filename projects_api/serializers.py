@@ -787,7 +787,7 @@ class AirportsSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         """"Used to create a airport data"""
         airport_data = models.Airports(
-            country_code=validated_data['country_code'],
+            countryCode=validated_data['countryCode'],
             country=validated_data['country'],
             city=validated_data['city'],
             airport=validated_data['airport']
@@ -801,20 +801,21 @@ class AirportsSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 
-class FlightCostsSerializer(serializers.ModelSerializer):
+class FlightInfoSerializer(serializers.ModelSerializer):
     """FlightCostsSerializer scheme a data object"""
     class Meta:
-        model = models.FlightCosts
+        model = models.FlightInfo
         fields = '__all__'
 
     def create(self, validated_data):
-        """"Used to create a FlightCosts data"""
-        flight_cost_data = models.FlightCosts(
-            departure_airport_id=validated_data['departure_airport_id'],
-            arrival_airport_id=validated_data['arrival_airport_id'],
-            departure_time=validated_data['departure_time'],
-            departure_date=validated_data['departure_date'],
-            cost=validated_data['cost']
+        """"Used to create a FlightInfo data"""
+        flight_cost_data = models.FlightInfo(
+            departureAirportId=validated_data['departureAirportId'],
+            arrivalAirportId=validated_data['arrivalAirportId'],
+            departureTime=validated_data['departureTime'],
+            departureDate=validated_data['departureDate'],
+            cost=validated_data['cost'],
+            img=validated_data['img']
         )
 
         flight_cost_data.save()

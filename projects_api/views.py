@@ -273,9 +273,9 @@ class AirportsViewSet(viewsets.ModelViewSet):
     search_fields = ('=id',)
 
 
-class FlightCostsViewSet(viewsets.ModelViewSet):
+class FlightInfoViewSet(viewsets.ModelViewSet):
     """Handle creating and updating flight costs"""
-    serializer_class = serializers.FlightCostsSerializer
-    queryset = models.FlightCosts.objects.all()
+    serializer_class = serializers.FlightInfoSerializer
+    queryset = models.FlightInfo.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ['=departure_airport_id', '=arrival_airport_id']
+    search_fields = ('=departureAirportId')
