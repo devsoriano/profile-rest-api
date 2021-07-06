@@ -60,7 +60,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "https://evamed-test.herokuapp.com",
     "https://evamed.herokuapp.com",
-    "http://localhost:8080"
+    "http://localhost:8080",
+    "https://suspicious-hawking-df5be4.netlify.app"
 ]
 
 ROOT_URLCONF = 'profiles_project.urls'
