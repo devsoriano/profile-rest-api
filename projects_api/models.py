@@ -167,6 +167,7 @@ class Material(models.Model):
     name_material = models.CharField(max_length=255, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
     database_from = models.CharField(max_length=255, null=True)
+    description = models.TextField(null=True)
 
     def __str__(self):
         """Return string representation of name_material"""
