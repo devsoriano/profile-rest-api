@@ -230,8 +230,8 @@ class MaterialSchemeProject(models.Model):
     city_id_origin = models.ForeignKey(City, on_delete=models.CASCADE, null=True)
     state_id_origin = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
     city_id_end = models.ForeignKey(City, related_name='%(class)s_requests_created', on_delete=models.CASCADE, null=True)
-    transport_id_origin = models.ForeignKey(Transport, on_delete=models.CASCADE, null=True)
-    transport_id_end = models.ForeignKey(Transport, related_name='%(class)s_requests_created_second', on_delete=models.CASCADE, null=True)
+    transport_id_origin = models.IntegerField(null=True)
+    transport_id_end = models.IntegerField(null=True)
     unit_text = models.CharField(max_length=255, null=True)
     description_material = models.TextField(null=True)
 
