@@ -490,7 +490,9 @@ class MaterialSchemeProjectSerializer(serializers.ModelSerializer):
             state_id_origin=validated_data['state_id_origin'],
             city_id_end=validated_data['city_id_end'],
             unit_text=validated_data['unit_text'],
-            description_material=validated_data['description_material']
+            description_material=validated_data['description_material'],
+            transport_id_origin=validated_data['transport_id_origin'],
+            transport_id_end=validated_data['transport_id_end'],
         )
 
         material_scheme.save()
