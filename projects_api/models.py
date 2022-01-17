@@ -268,7 +268,7 @@ class MaterialSchemeData(models.Model):
     standard_id = models.ForeignKey(Standard, on_delete=models.CASCADE, null=True)
     potential_type_id = models.ForeignKey(PotentialType, on_delete=models.CASCADE, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
-    value = models.DecimalField(max_digits=45, decimal_places=35, null=True )
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
         """Return string representation of material"""
@@ -279,7 +279,7 @@ class ConstructiveSystemElement(models.Model):
     project_id = models.ForeignKey(Project, on_delete=models.CASCADE, null=True)
     section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
     constructive_process_id = models.ForeignKey(ConstructiveProcess, on_delete=models.CASCADE, null=True)
-    quantity =  models.IntegerField()
+    quantity = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     volume_unit_id = models.ForeignKey(VolumeUnit, on_delete=models.CASCADE, null=True)
     energy_unit_id = models.ForeignKey(EnergyUnit, on_delete=models.CASCADE, null=True)
     bulk_unit_id = models.ForeignKey(BulkUnit, on_delete=models.CASCADE, null=True)
@@ -319,7 +319,7 @@ class ElectricityConsumptionData(models.Model):
     """ECD model"""
     annual_consumption_required_id = models.ForeignKey(AnnualConsumptionRequired, on_delete=models.CASCADE, null=True)
     unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
-    quantity =  models.IntegerField(null=True)
+    quantity = models.DecimalField(max_digits=20, decimal_places=10, null=True)
     type = models.ForeignKey(TypeEnergy, on_delete=models.CASCADE, null=True)
     percentage = models.IntegerField(null=True)
     source = models.CharField(max_length=255, null=True)
