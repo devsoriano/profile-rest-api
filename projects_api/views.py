@@ -264,18 +264,16 @@ class LocalDistancesViewSet(viewsets.ModelViewSet):
     filter_backends = (filters.SearchFilter,)
     search_fields = ('id', )
 
-
-class AirportsViewSet(viewsets.ModelViewSet):
-    """Handle creating and updating airports"""
-    serializer_class = serializers.AirportsSerializer
-    queryset = models.Airports.objects.all()
+class PotentialTransportViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating potential transports"""
+    serializer_class = serializers.PotentialTransportSerializer
+    queryset = models.PotentialTransport.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('=id',)
+    search_fields = ('id', )
 
-
-class FlightInfoViewSet(viewsets.ModelViewSet):
-    """Handle creating and updating flight costs"""
-    serializer_class = serializers.FlightInfoSerializer
-    queryset = models.FlightInfo.objects.all()
+class ConversionsViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating conversions"""
+    serializer_class = serializers.ConversionsSerializer
+    queryset = models.Conversions.objects.all()
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('=departureAirportId')
+    search_fields = ('id', )

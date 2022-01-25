@@ -41,8 +41,8 @@ router.register('type-energy-data', views.TypeEnergyDataViewSet)
 router.register('states', views.StatesViewSet)
 router.register('cities', views.CitiesViewSet)
 router.register('local-distances', views.LocalDistancesViewSet)
-router.register('airports', views.AirportsViewSet)
-router.register('flights-info', views.FlightInfoViewSet)
+router.register('potential-transport', views.PotentialTransportViewSet)
+router.register('conversions', views.ConversionsViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

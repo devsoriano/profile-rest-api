@@ -781,49 +781,45 @@ class TypeEnergyDataSerializer(serializers.ModelSerializer):
         return super().update(instance, validated_data)
 
 
-class AirportsSerializer(serializers.ModelSerializer):
-    """Airport scheme a data object"""
+class PotentialTransportSerializer(serializers.ModelSerializer):
+    """Potential Transport Serializer"""
     class Meta:
-        model = models.Airports
+        model = models.PotentialTransport
         fields = '__all__'
 
     def create(self, validated_data):
-        """"Used to create a airport data"""
-        airport_data = models.Airports(
-            countryCode=validated_data['countryCode'],
-            country=validated_data['country'],
-            city=validated_data['city'],
-            airport=validated_data['airport']
+        """Used to create a Potential Transport data"""
+        potential_transport_data = models.PotentialTransport(
+            transport_id=validated_data['transport_id'],
+            potential_type_id=validated_data['potential_type_id'],
+            value=validated_data['value']
         )
 
-        airport_data.save()
-        return airport_data
+        potential_transport_data.save()
+        return potential_transport_data
 
     def update(self, instance, validated_data):
-        """Handle updating a airport"""
+        """Handle updating a PotentialTransport"""
         return super().update(instance, validated_data)
 
 
-class FlightInfoSerializer(serializers.ModelSerializer):
-    """FlightCostsSerializer scheme a data object"""
+class ConversionsSerializer(serializers.ModelSerializer):
+    """Conversions Serializer"""
     class Meta:
-        model = models.FlightInfo
+        model = models.Conversions
         fields = '__all__'
 
     def create(self, validated_data):
-        """"Used to create a FlightInfo data"""
-        flight_cost_data = models.FlightInfo(
-            departureAirportId=validated_data['departureAirportId'],
-            arrivalAirportId=validated_data['arrivalAirportId'],
-            departureTime=validated_data['departureTime'],
-            departureDate=validated_data['departureDate'],
-            cost=validated_data['cost'],
-            img=validated_data['img']
+        """Used to create a Conversions data"""
+        conversions_data = models.Conversions(
+            material_id=validated_data['material_id'],
+            unit_id=validated_data['unit_id'],
+            value=validated_data['value']
         )
 
-        flight_cost_data.save()
-        return flight_cost_data
+        conversions_data.save()
+        return conversions_data
 
     def update(self, instance, validated_data):
-        """Handle updating a FlightCosts"""
+        """Handle updating a Conversions"""
         return super().update(instance, validated_data)

@@ -387,32 +387,26 @@ class TypeEnergyData(models.Model):
         return self.value
 
 
-class Airports(models.Model):
-    """Airports model"""
-    countryCode = models.CharField(max_length=255, null=True)
-    country = models.CharField(max_length=255, null=True)
-    city = models.CharField(max_length=255, null=True)
-    airport = models.CharField(max_length=255, null=True)
+class PotentialTransport(models.Model):
+    """Potential Transport model"""
+    transport_id = models.ForeignKey(
+        Transport, on_delete=models.CASCADE, null=True)
+    potential_type_id = models.ForeignKey(
+        PotentialType, on_delete=models.CASCADE, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
         """Return string representation"""
-        return self.airport
+        return self.value
 
 
-class FlightInfo(models.Model):
-    """FlightInfo model"""
-    departureAirportId = models.ForeignKey(
-        Airports, on_delete=models.CASCADE, null=True
-    )
-    arrivalAirportId = models.ForeignKey(
-        Airports, related_name='%(class)s_requests_created_unique',
-        on_delete=models.CASCADE, null=True
-    )
-    departureTime = models.CharField(max_length=255, null=True)
-    departureDate = models.CharField(max_length=255, null=True)
-    cost = models.CharField(max_length=255, null=True)
-    img = models.TextField(null=True)
+class Conversions(models.Model):
+    """Conversions model"""
+    material_id = models.ForeignKey(
+        Material, on_delete=models.CASCADE, null=True)
+    unit_id = models.ForeignKey(Unit, on_delete=models.CASCADE, null=True)
+    value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
 
     def __str__(self):
         """Return string representation"""
-        return self.img
+        return self.value
