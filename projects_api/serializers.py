@@ -823,3 +823,23 @@ class ConversionsSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         """Handle updating a Conversions"""
         return super().update(instance, validated_data)
+
+
+class DataBaseMaterialSerializer(serializers.ModelSerializer):
+    """Serializes a DataBaseMaterial"""
+    class Meta:
+        model = models.DataBaseMaterial
+        fields = '__all__'
+
+    def create(self, validated_data):
+        """Used to create origin"""
+        DataBaseMaterial = models.DataBaseMaterial(
+            name = validated_data['name']
+        )
+
+        DataBaseMaterial.save()
+        return DataBaseMaterial
+
+    def update(self, instance, validated_data):
+        """Handle updating a section"""
+        return super().update(instance, validated_data)

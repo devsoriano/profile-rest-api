@@ -43,6 +43,7 @@ router.register('cities', views.CitiesViewSet)
 router.register('local-distances', views.LocalDistancesViewSet)
 router.register('potential-transport', views.PotentialTransportViewSet)
 router.register('conversions', views.ConversionsViewSet)
+router.register('database-material', views.DataBaseMaterialViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

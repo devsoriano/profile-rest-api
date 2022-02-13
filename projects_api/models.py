@@ -410,3 +410,12 @@ class Conversions(models.Model):
     def __str__(self):
         """Return string representation"""
         return self.value
+
+
+class DataBaseMaterial(models.Model):
+    """DataBaseMaterial model"""
+    name_standard = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return string"""
+        return self.name

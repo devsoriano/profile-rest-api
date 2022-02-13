@@ -277,3 +277,10 @@ class ConversionsViewSet(viewsets.ModelViewSet):
     queryset = models.Conversions.objects.all()
     filter_backends = (filters.SearchFilter,)
     search_fields = ('id', )
+
+class DataBaseMaterialViewSet(viewsets.ModelViewSet):
+    """Handle creating and updating DataBaseMaterial"""
+    serializer_class = serializers.DataBaseMaterialSerializer
+    queryset = models.DataBaseMaterial.objects.all()
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('id', )
