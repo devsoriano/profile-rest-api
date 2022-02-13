@@ -414,7 +414,7 @@ class Conversions(models.Model):
 
 class DataBaseMaterial(models.Model):
     """DataBaseMaterial model"""
-    name_standard = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         """Return string"""
