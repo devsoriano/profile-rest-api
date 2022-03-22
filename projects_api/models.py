@@ -221,7 +221,7 @@ class MaterialSchemeProject(models.Model):
     origin_id = models.ForeignKey(Origin, on_delete=models.CASCADE, null=True)
     construction_system = models.CharField(max_length=255, null=True)
     provider_distance = models.IntegerField(null=True)
-    quantity = models.DecimalField(max_digits=30, decimal_places=4, null=True)
+    quantity = models.DecimalField(max_digits=30, decimal_places=20, null=True)
     section_id = models.ForeignKey(Section, on_delete=models.CASCADE, null=True)
     value = models.DecimalField(max_digits=45, decimal_places=35, null=True)
     distance_init = models.DecimalField(max_digits=45, decimal_places=35, null=True)
