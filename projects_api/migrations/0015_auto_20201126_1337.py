@@ -4,6 +4,7 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
+    atomic = False  # <<<< THIS LINE
 
     dependencies = [
         ('projects_api', '0014_constructivesystemelement_construction_stage_type'),
