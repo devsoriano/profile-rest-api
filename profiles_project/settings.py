@@ -60,7 +60,6 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:4200",
     "https://evamed-test.herokuapp.com",
     "https://evamed.herokuapp.com",
-    "https://evamed.netlify.app",
     "http://localhost:8080",
     "https://suspicious-hawking-df5be4.netlify.app"
 ]
