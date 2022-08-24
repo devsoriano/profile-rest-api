@@ -4,6 +4,7 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+    atomic = False  # <<<< THIS LINE
 
     dependencies = [
         ('projects_api', '0017_electricityconsumptiondata'),
