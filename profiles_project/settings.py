@@ -24,7 +24,7 @@ SECRET_KEY = '25&!(c13l4!5kwt_9(#uh1bd&^@je)im*iw0$@seh3lrox%zw)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['18.215.148.254', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -66,6 +66,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://172.16.3.134:8000",
     "http://0.0.0.0:8000",
     "http://0.0.0.0:8080",
+    "18.215.148.254"
 ]
 
 ROOT_URLCONF = 'profiles_project.urls'
