@@ -66,7 +66,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://172.16.3.134:8000",
     "http://0.0.0.0:8000",
     "http://0.0.0.0:8080",
-    "18.215.148.254"
+    "http://18.215.148.254",
+    "http://127.0.0.1"
 ]
 
 ROOT_URLCONF = 'profiles_project.urls'
